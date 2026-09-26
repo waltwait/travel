@@ -250,14 +250,37 @@ window.TRIP = {
     },
     {
       date: "2026-11-30",
-      theme: "回台灣",
+      theme: "冬柏島日出 + 回台灣",
       line: "cc",
       from: { q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
       items: [
+        {
+          type: "stop", start: "07:00", end: "07:45",
+          notes: ["日出 07:12，從飯店走過去約 10 分鐘", "海岸步道一圈約 1 公里、30–40 分鐘，有燈塔、人魚像，看得到廣安大橋和 Marine City", "想多睡就跳過，直接去吃早餐"],
+          places: [
+            { kind: "spot", suggest: true, name: "冬柏島海岸步道 동백섬 해안산책로", hours: "24 小時", q: "동백섬 해안산책로" }
+          ]
+        },
+        { type: "move", start: "07:45", end: "08:00", title: "沿著海灘走去吃早餐", note: "約 15 分鐘", q: "수변최고돼지국밥 해운대점", to: "水邊最高豬肉湯飯" },
+        {
+          type: "stop", start: "08:00", end: "08:40",
+          notes: ["豬肉湯飯 돼지국밥 是釜山的代表早餐，前幾天吃過牛肉湯飯和河豚湯，最後一餐吃這個", "24 小時營業，早上可能要等一下"],
+          places: [
+            { kind: "food", meal: "早餐", suggest: true, name: "水邊最高豬肉湯飯 수변최고돼지국밥 海雲台店", hours: "24 小時", q: "수변최고돼지국밥 해운대점" }
+          ]
+        },
+        { type: "move", start: "08:40", end: "09:00", title: "回飯店拿行李、退房", notes: ["約 10 分鐘", "行李前一晚先收好"], q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
+        {
+          type: "move", start: "09:00", end: "10:10", title: "搭計程車到金海機場國際線",
+          notes: ["約 1 小時、3 萬韓元左右，週一早上會塞車", "4 個人加行李箱一台轎車塞不下，用 Kakao T 叫大型計程車，或分 2 台", "也可以搭機場巴士 1 號 공항리무진1：在「동백섬 입구」上車，約 1 小時、每人 9,500 韓元，用「버스타고」App 預約"],
+          q: "김해국제공항 국제선", at: [35.1801, 128.9364], to: "金海機場國際線"
+        },
+        { type: "move", start: "10:10", end: "12:00", title: "報到、托運、出境", notes: ["起飛前 2 小時到", "有要退稅的，托運前先辦"] },
         { type: "move", start: "12:30", end: "14:15", flight: "JX901", title: "搭飛機 JX901", note: "金海 國際線 → 桃機 T1" },
-        { type: "move", start: "14:15", title: "抵達桃園", note: "入境、領行李" }
-      ],
-      pending: "起飛前的行程還沒排。"
+        { type: "move", start: "14:15", end: "15:00", title: "抵達桃園", note: "入境、領行李" },
+        { type: "move", start: "15:00", end: "15:20", title: "機捷普通車 第一航廈 → 高鐵桃園站", note: "約 20 分鐘" },
+        { type: "move", start: "15:35", end: "15:50", title: "高鐵回新竹", notes: ["桃園 → 新竹約 12 分鐘", "時間為約略，班機可能延誤，落地後再訂或搭自由座"] }
+      ]
     }
   ]
 };
