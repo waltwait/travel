@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "travel",
-  "short_name": "travel",
+  "name": "Travel",
+  "short_name": "Travel",
   "description": "每一趟旅行的行程，一趟一頁。",
   "lang": "zh-Hant",
   "start_url": "./",
