@@ -139,13 +139,6 @@
   .fact { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
   .fact__k { font-size: 13px; color: var(--ink-3); flex: none; }
   .fact a { font-weight: 500; text-underline-offset: 3px; text-decoration-color: var(--rule); overflow-wrap: anywhere; }
-  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-2); align-items: center; }
-  .legend__i { display: inline-flex; align-items: center; gap: 5px; }
-  .legend .ico { width: 16px; height: 16px; color: var(--ink-3); }
-  .legend__swatch { font-weight: 700; }
-  .legend__swatch--meal { color: var(--blue); }
-  .legend__swatch--booked { color: var(--red); }
-  .legend__dash { width: 18px; height: 4px; border-radius: 2px; background: repeating-linear-gradient(90deg, var(--ink-3) 0 4px, transparent 4px 7px); }
 
   /* ---------- day ---------- */
   .day { padding-block: 40px 16px; scroll-margin-top: 60px; }
@@ -411,21 +404,6 @@
     }
     .fab__go svg { width: 13px; height: 13px; }
 
-    /* 兩張登機證左右滑動並排，第二張露出一點邊 */
-    .hero { grid-template-columns: minmax(0, 1fr); }
-    .passes {
-      display: flex; gap: 12px;
-      margin-inline: -16px;
-      padding: 2px 16px 4px;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline: 16px;
-      scrollbar-width: none;
-    }
-    .passes::-webkit-scrollbar { display: none; }
-    .pass { flex: 0 0 calc(100% - 44px); scroll-snap-align: start; }
-
     /* Google 地圖路線收成一排「早上」「下午」「晚上」小按鈕，站名先藏起來 */
     .routes { display: flex; flex-wrap: wrap; gap: 8px; }
     .routes__k { flex-basis: 100%; }
@@ -464,7 +442,6 @@
   </div>
   <div class="passes" id="passes"></div>
   <div class="facts" id="facts"></div>
-  <div class="legend" id="legend"></div>
 </header>
 
 <main class="wrap" id="days"></main>
@@ -549,14 +526,6 @@
   document.getElementById("facts").innerHTML =
     '<div class="fact"><span class="fact__k">住宿</span><a href="' + mapUrl(T.hotel.q || T.hotel.name) +
     '" target="_blank" rel="noopener">' + esc(T.hotel.name) + '</a></div>';
-
-  document.getElementById("legend").innerHTML =
-    '<span class="legend__i"><span class="ico">' + ICON.food + '</span>吃喝</span>' +
-    '<span class="legend__i"><span class="ico">' + ICON.spot + '</span>景點・逛街</span>' +
-    '<span class="legend__i"><span class="legend__dash"></span>移動</span>' +
-    '<span class="legend__i"><span class="legend__swatch legend__swatch--meal">藍字</span>正餐</span>' +
-    '<span class="legend__i"><span class="legend__swatch legend__swatch--booked">紅字</span>已預約</span>' +
-    '<span class="legend__i">點地名開 Google 地圖</span>';
 
   /* ---------- days ---------- */
   document.getElementById("tabs").innerHTML = T.days.map(function (d) {
@@ -725,6 +694,9 @@
     ticking = false;
     var idx = -1;
     sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= 120) idx = i; });
+    // 最後一天比較短、螢幕又高的時候，捲到底它也到不了頂端，所以捲到底就直接亮最後一天
+    var se = document.scrollingElement;
+    if (se.scrollTop > 0 && se.scrollTop + window.innerHeight >= se.scrollHeight - 4) idx = sections.length - 1;
     tabs.forEach(function (t, i) { t.classList.toggle("is-active", i === idx); });
   }
   window.addEventListener("scroll", function () {
