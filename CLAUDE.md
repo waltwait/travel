@@ -13,7 +13,7 @@
   - `docs/manifest.webmanifest`：App 名稱、圖示、全螢幕設定
   - `docs/sw.js`：離線快取。有網路就抓最新的，沒網路或 3 秒沒回應才用存下來的；改了快取邏輯要把 `CACHE` 的版本號加一
   - `docs/assets/app.js`：註冊 `sw.js`、把這一頁連到的頁面先存起來、從背景回來超過 5 分鐘自動重新整理
-  - `docs/assets/icons/`：App 圖示（藍底、白色飛機、芥末黃虛線航線）。改圖示改 `icon.svg`，再輸出成 `icon-512.png`、`icon-192.png`、`apple-touch-icon.png`（180×180）
+  - `docs/assets/icons/`：App 圖示（藍底、白色飛機、芥末黃虛線航線）。改圖示改 `icon.svg`，再輸出成 `icon-512.png`、`icon-192.png`、`apple-touch-icon.png`（180×180）。`icon-monochrome.svg` 是 Android「主題圖示」用的白色剪影（透明底），輸出成 `icon-monochrome-512.png`、`icon-monochrome-192.png`
   - 每一頁的 `<head>` 都要有 manifest、icon、apple-touch-icon、theme-color 那幾行，`</body>` 前要載入 `assets/app.js`（複製 `sin-2026-10/` 就會一起帶到）
 - 新增一趟網站：
   1. 複製 `docs/sin-2026-10/` 成新資料夾，改裡面的 `itinerary.js`
