@@ -47,7 +47,6 @@
   .nav__home { font-size: 14px; color: var(--ink-2); text-decoration: none; }
   .nav__home:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
   .nav__sep { color: var(--ink-3); }
-  @media (max-width: 479px) { .nav__sep, .nav__brand { display: none; } }
   .nav__brand {
     font-family: var(--f-display);
     font-size: 22px;
@@ -346,6 +345,103 @@
   .nav-btn svg { width: 11px; height: 11px; }
   .status__next { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
   .foot { padding-block: 32px 48px; font-size: 13px; color: var(--ink-3); border-top: 1.5px dashed var(--rule); }
+  .fab { display: none; }
+
+  /* ---------- 手機：邊走邊看（640px 以上完全不受影響） ---------- */
+  @media (max-width: 639px) {
+    /* 底部留位置給日期分頁（52px），旅途中再加浮動按鈕（52px + 上下各 10px） */
+    body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
+    body.has-fab { padding-bottom: calc(124px + env(safe-area-inset-bottom, 0px)); }
+
+    /* 頂部只留「旅行手帳 / SIN」。毛玻璃搬到 ::before，
+       因為 .nav 本身有 backdrop-filter 的話，裡面 fixed 的日期分頁會被綁在 .nav 裡 */
+    .nav { background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .nav::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: var(--bg);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    /* 日期分頁固定在最下面，平分寬度；上緣是當天的紙膠帶色 */
+    .nav__tabs {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      margin: 0; gap: 0;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: var(--surface);
+      box-shadow: 0 -1px 0 var(--rule);
+    }
+    .tab {
+      flex: 1 0 auto;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 10px;
+      border-radius: 0;
+      border-bottom: 0;
+      border-top: 4px solid var(--line);
+      font-size: 15px;
+    }
+
+    /* 下一站浮動按鈕：浮在日期分頁上方，整顆都是導航連結 */
+    .fab {
+      position: fixed; z-index: 11;
+      left: 12px; right: 12px;
+      bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+      display: flex; align-items: center; gap: 10px;
+      min-height: 52px;
+      padding: 6px 6px 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .16);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .fab__k { flex: none; font-size: 13px; font-weight: 700; color: var(--ink-3); }
+    .fab__name { flex: 1; min-width: 0; font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fab__go {
+      flex: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      min-height: 40px; padding: 0 16px;
+      border-radius: 6px;
+      background: var(--blue); color: var(--surface);
+      font-size: 15px; font-weight: 700;
+    }
+    .fab__go svg { width: 13px; height: 13px; }
+
+    /* 兩張登機證左右滑動並排，第二張露出一點邊 */
+    .hero { grid-template-columns: minmax(0, 1fr); }
+    .passes {
+      display: flex; gap: 12px;
+      margin-inline: -16px;
+      padding: 2px 16px 4px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 16px;
+      scrollbar-width: none;
+    }
+    .passes::-webkit-scrollbar { display: none; }
+    .pass { flex: 0 0 calc(100% - 44px); scroll-snap-align: start; }
+
+    /* Google 地圖路線收成一排「早上」「下午」「晚上」小按鈕，站名先藏起來 */
+    .routes { display: flex; flex-wrap: wrap; gap: 8px; }
+    .routes__k { flex-basis: 100%; }
+    .seg { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; }
+    .seg__stops { font-size: 15px; }
+    .seg__list, .seg__open { display: none; }
+    .seg__go .ext { width: 12px; height: 12px; }
+
+    /* 導航按鈕看起來 36px 高，手指點得到的範圍往上下各擴 4px 到 44px */
+    .nav-btn { position: relative; min-height: 36px; padding: 0 12px; gap: 5px; border-radius: 6px; font-size: 14px; }
+    .nav-btn svg { width: 13px; height: 13px; }
+    .nav-btn::after { content: ""; position: absolute; inset: -4px 0; }
+
+    /* 「看現在的行程」跳過去時，進行中那一列不要被頂部擋住 */
+    .row { scroll-margin-top: 64px; }
+  }
 
 </style>
 </head>
@@ -374,6 +470,8 @@
 <main class="wrap" id="days"></main>
 
 <footer class="wrap foot" id="foot"></footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" hidden></a>
 
 <script src="itinerary.js"></script>
 <script>
@@ -573,10 +671,11 @@
       ? '<div class="routes"><p class="routes__k">用 Google 地圖開路線</p>' +
         segs.map(function (seg) {
           var url = "https://www.google.com/maps/dir/" + seg.pts.map(function (p) { return encodeURIComponent(p.q); }).join("/");
+          // 標籤和站名分開包，手機版只留標籤當小按鈕
           return '<a class="seg" href="' + url + '" target="_blank" rel="noopener"><span class="seg__stops">' +
-            '<b>' + seg.label + '</b>　' +
+            '<b class="seg__label">' + seg.label + '</b><span class="seg__list">　' +
             seg.pts.map(function (p) { return esc(p.name); }).join(" → ") +
-            '</span><span class="seg__go">開啟' + ICON.ext + '</span></a>';
+            '</span></span><span class="seg__go"><span class="seg__open">開啟</span>' + ICON.ext + '</span></a>';
         }).join("") + '</div>'
       : '';
 
@@ -603,6 +702,15 @@
     status = '<span class="status__pill marker">旅程第 ' + (dayDiff(first, now.date) + 1) + ' 天</span>' +
       (nowFound ? '<a class="status__jump" href="#now">看現在的行程</a>' : '') +
       (next ? '<span class="status__next">下一站：<b>' + esc(next.name) + '</b>' + navBtn(next.q) + '</span>' : '');
+    // 手機版的浮動按鈕（電腦版不顯示）
+    if (next) {
+      var fab = document.getElementById("fab");
+      fab.href = navUrl(next.q);
+      fab.innerHTML = '<span class="fab__k">下一站</span><span class="fab__name">' + esc(next.name) + '</span>' +
+        '<span class="fab__go">' + ICON.go + '導航</span>';
+      fab.hidden = false;
+      document.body.classList.add("has-fab");
+    }
   } else {
     status = '<span class="status__pill">旅程結束</span>';
   }
