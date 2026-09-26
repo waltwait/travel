@@ -188,6 +188,7 @@
   }
   .row__time .t-end { color: var(--ink-3); font-weight: 400; }
   .row__time .t-label { font-family: var(--f-body); font-size: 12px; font-weight: 500; white-space: nowrap; }
+  .row__time .t-day { font-size: 11.5px; color: var(--red); white-space: nowrap; }
   /* 螢光筆劃過 */
   .row__now {
     margin-top: 6px;
@@ -556,20 +557,26 @@
   }
 
   var dests = []; // 所有目的地（跨天），用來找「下一站」
+  var tripStartAt = 0; // 第一天第一列，以第一天 00:00 起算的分鐘數（前一晚出門就是負的）
 
   function renderDay(d, di) {
     var pts = d.from ? [{ q: d.from.q, name: d.from.to, until: -1, t: -1, date: d.date }] : [];
-    // 以當天 00:00 起算的分鐘數；比前一列早的時間（例如 00:30）視為隔天
+    // 以當天 00:00 起算的分鐘數；比前一列早的時間（例如 00:30）視為隔天，
+    // 標了 eve 的列是前一天晚上（負的分鐘數）
     var nowAt = dayDiff(d.date, now.date) * 1440 + now.min;
-    var prev = 0;
+    var prev = -Infinity;
     var spans = d.items.map(function (it) {
-      var s = toMin(it.start);
+      var back = it.eve ? 1440 : 0;
+      var s = toMin(it.start) - back;
       while (s < prev) s += 1440;
       prev = s;
-      var e = it.end ? toMin(it.end) : null;
+      var e = it.end ? toMin(it.end) - back : null;
       if (e !== null) while (e <= s) e += 1440;
       return { s: s, e: e };
     });
+    if (di === 0 && spans.length) tripStartAt = spans[0].s;
+    var eveDate = new Date(Date.parse(d.date + "T00:00:00Z") - 864e5).toISOString().slice(0, 10);
+    var eveShown = false;
     var stopNo = 0;
     var rows = d.items.map(function (it, i) {
       var sp = spans[i];
@@ -577,7 +584,9 @@
       var live = nowAt >= sp.s && nowAt < end;
       var anchor = live && !nowFound;
       if (live) nowFound = true;
-      var time = '<div class="row__time">' +
+      var eveTag = it.eve && !eveShown ? '<span class="t-day">' + md(eveDate) + '</span>' : '';
+      if (it.eve) eveShown = true;
+      var time = '<div class="row__time">' + eveTag +
         (it.label
           ? '<span class="t-label">' + esc(it.label) + '</span>'
           : '<span>' + it.start + '</span>' + (it.end ? '<span class="t-end">' + it.end + '</span>' : '')) +
@@ -591,7 +600,7 @@
 
       if (it.type === "move") {
         // 移動中：目的地在抵達前都算「下一站」
-        if (it.q) pts.push({ q: it.q, name: it.to || it.title, until: end, t: end, date: d.date });
+        if (it.q) pts.push({ q: it.q, name: it.to || it.title, until: end, t: end, date: d.date, eve: it.eve });
         var title = it.q
           ? '<a class="move__title" href="' + mapUrl(it.q) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>'
           : '<span class="move__title">' + esc(it.title) + '</span>';
@@ -608,7 +617,7 @@
       stopNo++;
       it.places.forEach(function (p) {
         // 停留點：開始之後就換下一站
-        pts.push({ q: p.q || p.name, name: p.name, until: sp.s, t: (sp.s + end) / 2, date: d.date });
+        pts.push({ q: p.q || p.name, name: p.name, until: sp.s, t: (sp.s + end) / 2, date: d.date, eve: it.eve });
       });
       var notes = notesOf(it);
       return '<li' + attrs + '>' + time +
@@ -628,6 +637,7 @@
     var stops = [];
     pts.forEach(function (p) {
       dests.push(p);
+      if (p.eve) return; // 前一晚在出發地的點不串進當地的路線
       var prevStop = stops[stops.length - 1];
       if (!prevStop || prevStop.q !== p.q) stops.push(p);
     });
@@ -672,11 +682,14 @@
   var status;
   var until = dayDiff(now.date, first);
   var dep = T.flights[0];
-  if (until > 0) {
+  var nowRel = dayDiff(first, now.date) * 1440 + now.min;
+  var startAt = tripStartAt < 0 ? tripStartAt - 60 : 0;
+  if (nowRel < startAt) {
     status = '<span class="status__pill marker">還有 ' + until + ' 天出發</span><span>' + md(dep.date) + '（' + wd(dep.date) + '）' + dep.from.time + ' ' + esc(dep.no) + ' 起飛</span>';
   } else if (now.date <= last) {
     var next = dests.filter(function (p) { return dayDiff(p.date, now.date) * 1440 + now.min < p.until; })[0];
-    status = '<span class="status__pill marker">旅程第 ' + (dayDiff(first, now.date) + 1) + ' 天</span>' +
+    var dayNo = dayDiff(first, now.date) + 1;
+    status = '<span class="status__pill marker">' + (dayNo > 0 ? '旅程第 ' + dayNo + ' 天' : '今晚出發') + '</span>' +
       (nowFound ? '<a class="status__jump" href="#now">看現在的行程</a>' : '') +
       (next ? '<span class="status__next">下一站：<b>' + esc(next.name) + '</b>' + navBtn(next.q) + '</span>' : '');
     // 手機版的浮動按鈕（電腦版不顯示）

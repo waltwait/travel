@@ -7,6 +7,7 @@
  *         "free"  空檔／待安排
  *   start / end   24 小時制 "HH:MM"，end 可省略；過午夜直接寫 "00:30" 即可
  *   label         想用文字取代時間時使用，例如 "結束後"
+ *   eve: true     這一列在前一天晚上（例如半夜的班機，前一晚就要出門），時間照寫 "21:57"
  *   note / notes  備註（字串或字串陣列）
  *   （每天的 from：整天路線的出發地，例如飯店）
  *   links         額外連結，例如 [{ text: "客運時刻表", url: "https://..." }]
@@ -59,6 +60,17 @@ window.TRIP = {
       theme: "洗頭 + 聖陶沙 + 萬聖夜",
       line: "cc",
       items: [
+        { eve: true, type: "move", start: "21:57", end: "22:09", title: "高鐵 1688 新竹 → 桃園", note: "自由座 10–12 車" },
+        { eve: true, type: "move", start: "22:17", end: "22:36", title: "機捷普通車 高鐵桃園站 → 第一航廈", notes: ["只有 8 分鐘轉乘", "趕不上就搭下一班，時間還很夠"] },
+        { eve: true, type: "move", start: "22:36", end: "23:10", title: "酷航報到、出境", note: "櫃台起飛前 3 小時開" },
+        {
+          eve: true, type: "stop", start: "23:10", end: "00:40",
+          notes: ["出境後在管制區走路或搭航廈電車到第二航廈 4 樓", "23:00 後是深夜時段：簡餐、泡麵、飲料、生啤酒，淋浴間不開", "最多待 3 小時"],
+          places: [
+            { kind: "food", name: "東方宇逸貴賓室 Oriental Club Lounge", hours: "24 小時", q: "東方宇逸貴賓室 桃園機場第二航廈" }
+          ]
+        },
+        { type: "move", start: "00:40", end: "01:15", title: "走回第一航廈登機門", note: "登機時間以登機證為準" },
         { type: "move", start: "01:35", end: "06:00", title: "搭灰機 TR873", note: "桃機 T1 → 樟宜 T1" },
         { type: "move", start: "06:00", end: "06:50", title: "入境 + 領行李", q: "Changi Airport Terminal 1", to: "樟宜機場 T1" },
         { type: "move", start: "06:50", end: "08:00", title: "搭地鐵至飯店放行李", note: "要走14分鐘 0.0", q: HOTEL.q, to: HOTEL.name },
