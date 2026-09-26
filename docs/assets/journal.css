@@ -1,0 +1,124 @@
+/*
+ * 旅行手帳的共用樣式：紙張、墨水色、字體、紙膠帶、印章。
+ * 首頁和每一趟的行程頁都會載入這個檔案，改這裡就會一起變。
+ *
+ * 字體（在各頁 <head> 用 Google Fonts 載入）：
+ *   --f-display  標題：Young Serif（英數）＋ Noto Serif TC（中文）
+ *   --f-body     內文、主題、備註：霞鶩文楷 LXGW WenKai TC
+ *   --f-mono     時間、航班號：Courier Prime
+ *
+ * 每天的紙膠帶顏色沿用 itinerary.js 的 line 欄位：cc 芥末黃、ne 乾燥玫瑰、ew 鼠尾草綠。
+ */
+:root {
+  --bg: #F3ECDC;          /* 手帳內頁 */
+  --surface: #FBF7EC;     /* 貼上去的便條、票根 */
+  --kraft: #B98F63;       /* 牛皮紙封面 */
+  --ink: #3B2F25;
+  --ink-2: #66564A;
+  --ink-3: #8F7E6B;
+  --rule: #DCCFB8;
+  --rule-2: #E9E0CD;
+  --dot: rgba(59, 47, 37, .14);
+  --red: #B3301F;         /* 朱紅印泥：已預約、印章 */
+  --red-soft: #F1DDD2;
+  --blue: #2B4A86;        /* 藍黑鋼筆墨水：正餐、連結 */
+  --blue-soft: #E0E2E8;
+  --green: #2F6B4F;
+  --plum: #6E3B6E;
+  --now: #F2DC5D;         /* 螢光筆 */
+  --now-ink: #4A3A00;
+  --cc: #E0B24A; --cc-on: #3B2F25;
+  --ne: #DB9A95; --ne-on: #3B2F25;
+  --ew: #9DB592; --ew-on: #3B2F25;
+  --f-display: "Young Serif", "Noto Serif TC", "Songti TC", serif;
+  --f-body: "LXGW WenKai TC", "Kaiti TC", "PingFang TC", "Microsoft JhengHei", serif;
+  --f-mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+  /* 紙膠帶兩端撕開的鋸齒 */
+  --tape-clip: polygon(0 4%, 4% 0, 96% 3%, 100% 0, 97% 26%, 100% 50%, 97% 74%, 100% 100%, 95% 97%, 4% 100%, 0 96%, 3% 72%, 0 50%, 3% 26%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #231D17;
+    --surface: #2D261F;
+    --kraft: #120E0B;
+    --ink: #EDE3CF;
+    --ink-2: #BDAF99;
+    --ink-3: #8C7E6A;
+    --rule: #43392E;
+    --rule-2: #352C24;
+    --dot: rgba(237, 227, 207, .08);
+    --red: #EE8672;
+    --red-soft: #45261F;
+    --blue: #A2B9EA;
+    --blue-soft: #2A2F40;
+    --green: #86C3A2;
+    --plum: #D29BD0;
+    --now: #6A5812;
+    --now-ink: #FBE58A;
+    --cc: #C99A33; --cc-on: #1E1812;
+    --ne: #B9716C; --ne-on: #1E1812;
+    --ew: #7D9672; --ew-on: #1E1812;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #231D17;
+  --surface: #2D261F;
+  --kraft: #120E0B;
+  --ink: #EDE3CF;
+  --ink-2: #BDAF99;
+  --ink-3: #8C7E6A;
+  --rule: #43392E;
+  --rule-2: #352C24;
+  --dot: rgba(237, 227, 207, .08);
+  --red: #EE8672;
+  --red-soft: #45261F;
+  --blue: #A2B9EA;
+  --blue-soft: #2A2F40;
+  --green: #86C3A2;
+  --plum: #D29BD0;
+  --now: #6A5812;
+  --now-ink: #FBE58A;
+  --cc: #C99A33; --cc-on: #1E1812;
+  --ne: #B9716C; --ne-on: #1E1812;
+  --ew: #7D9672; --ew-on: #1E1812;
+}
+
+/* 點點格線的手帳內頁 */
+.paper {
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.3px);
+  background-size: 22px 22px;
+  background-position: 11px 11px;
+}
+
+/* 紙膠帶：兩端是撕開的鋸齒。顏色用 --tape 指定 */
+.tape {
+  display: block;
+  width: 84px;
+  height: 22px;
+  background: color-mix(in srgb, var(--tape, var(--cc)) 72%, transparent);
+  clip-path: var(--tape-clip);
+}
+
+/* 橡皮章：墨色用 color 指定；印泥不均的斑駁感用雜訊遮罩做 */
+.stamp {
+  color: var(--red);
+  border: 2.5px solid currentColor;
+  box-shadow: inset 0 0 0 2.5px var(--bg), inset 0 0 0 4px currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 5.96'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 5.96'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-mask-size: 180px 180px;
+  mask-size: 180px 180px;
+}
+.stamp--red { color: var(--red); }
+.stamp--blue { color: var(--blue); }
+.stamp--green { color: var(--green); }
+.stamp--plum { color: var(--plum); }
+
+/* 螢光筆劃過 */
+.marker {
+  background: linear-gradient(100deg, transparent 2%, var(--now) 4% 96%, transparent 98%) 0 60% / 100% 70% no-repeat;
+  color: var(--ink);
+}

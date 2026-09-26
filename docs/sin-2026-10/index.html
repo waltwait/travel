@@ -7,70 +7,10 @@
 <meta name="description" content="2026/10/17–10/19 新加坡三天兩夜行程：航班、每日時間軸、地圖連結。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@700&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="../assets/journal.css">
 <style>
-  :root {
-    --bg: #F1F4F2;
-    --surface: #FFFFFF;
-    --ink: #15201C;
-    --ink-2: #4B5853;
-    --ink-3: #75817C;
-    --rule: #D6DDD9;
-    --rule-2: #E6EBE8;
-    --red: #C22E17;
-    --red-soft: #FBE8E3;
-    --blue: #1D57BD;
-    --blue-soft: #E6EDFA;
-    --now: #FFF3D1;
-    --now-ink: #6B4A00;
-    --cc: #F29A0C; --cc-on: #1E1400;
-    --ne: #9312A8; --ne-on: #FFFFFF;
-    --ew: #00813C; --ew-on: #FFFFFF;
-    --f-display: "Barlow Condensed", "Arial Narrow", "Noto Sans TC", sans-serif;
-    --f-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --bg: #0D1311;
-      --surface: #161F1B;
-      --ink: #E5ECE8;
-      --ink-2: #A2AEA9;
-      --ink-3: #75817C;
-      --rule: #29342F;
-      --rule-2: #1F2925;
-      --red: #FF7C66;
-      --red-soft: #3A1C17;
-      --blue: #86B3FF;
-      --blue-soft: #18263D;
-      --now: #3A3113;
-      --now-ink: #FFD978;
-      --cc: #FDB03F; --cc-on: #1E1400;
-      --ne: #CD6BE4; --ne-on: #1A0420;
-      --ew: #35C47E; --ew-on: #03170C;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --bg: #0D1311;
-    --surface: #161F1B;
-    --ink: #E5ECE8;
-    --ink-2: #A2AEA9;
-    --ink-3: #75817C;
-    --rule: #29342F;
-    --rule-2: #1F2925;
-    --red: #FF7C66;
-    --red-soft: #3A1C17;
-    --blue: #86B3FF;
-    --blue-soft: #18263D;
-    --now: #3A3113;
-    --now-ink: #FFD978;
-    --cc: #FDB03F; --cc-on: #1E1400;
-    --ne: #CD6BE4; --ne-on: #1A0420;
-    --ew: #35C47E; --ew-on: #03170C;
-  }
-
+  /* 顏色、字體、紙膠帶、印章都在 ../assets/journal.css */
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -79,8 +19,8 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--f-body);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 15.5px;
+    line-height: 1.65;
   }
   img { max-width: 100%; }
   [hidden] { display: none !important; }
@@ -103,94 +43,102 @@
     border-bottom: 1px solid var(--rule);
   }
   .nav__inner { display: flex; align-items: center; gap: 12px; min-height: 52px; }
+  .nav__crumb { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+  .nav__home { font-size: 14px; color: var(--ink-2); text-decoration: none; }
+  .nav__home:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .nav__sep { color: var(--ink-3); }
+  @media (max-width: 479px) { .nav__sep, .nav__brand { display: none; } }
   .nav__brand {
     font-family: var(--f-display);
-    font-weight: 700;
     font-size: 22px;
-    letter-spacing: .02em;
+    letter-spacing: .03em;
     text-decoration: none;
     color: var(--red);
   }
   .nav__tabs { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
   .nav__tabs::-webkit-scrollbar { display: none; }
+  /* 筆記本側邊的索引標籤 */
   .tab {
-    display: flex; align-items: center; gap: 6px;
-    padding: 5px 11px;
-    border-radius: 999px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 5px 11px 3px;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 3px solid var(--line);
     text-decoration: none;
     color: var(--ink-2);
     font-family: var(--f-mono);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 700;
     white-space: nowrap;
-    font-variant-numeric: tabular-nums;
   }
-  .tab__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
-  .tab__wd { font-family: var(--f-body); font-size: 12px; }
-  .tab.is-active { background: var(--ink); color: var(--bg); }
+  .tab__dot { display: none; }
+  .tab__wd { font-family: var(--f-body); font-size: 13px; font-weight: 400; }
+  .tab.is-active { background: color-mix(in srgb, var(--line) 55%, transparent); color: var(--ink); }
 
   /* ---------- hero ---------- */
   .hero { padding-block: 32px 8px; display: grid; gap: 22px; }
-  .hero__eyebrow {
-    margin: 0;
-    font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: .08em;
-    color: var(--ink-2);
-    font-variant-numeric: tabular-nums;
-  }
-  .hero__title { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
+  .hero__eyebrow { margin: 0; font-size: 15px; color: var(--ink-2); }
+  .hero__title { margin: 14px 0 6px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px; }
+  /* 入境章 */
   .hero__code {
+    display: inline-block;
+    padding: 10px 20px 4px;
+    border-radius: 12px;
     font-family: var(--f-display);
-    font-weight: 700;
-    font-size: clamp(64px, 17vw, 112px);
-    line-height: .82;
-    letter-spacing: -.01em;
-    color: var(--red);
+    font-weight: 400;
+    font-size: clamp(56px, 15vw, 96px);
+    line-height: 1;
+    letter-spacing: .04em;
+    transform: rotate(-4deg);
   }
-  .hero__name { font-size: clamp(22px, 5.4vw, 32px); font-weight: 700; line-height: 1.2; }
+  .hero__name { font-family: var(--f-display); font-size: clamp(28px, 6.4vw, 40px); font-weight: 700; line-height: 1.2; letter-spacing: .08em; }
   .hero__head { display: grid; gap: 10px; }
   .status {
     display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
     font-size: 14px; color: var(--ink-2);
   }
-  .status__pill {
-    font-weight: 700;
-    color: var(--ink);
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    padding: 2px 12px;
-  }
-  .status__jump { color: var(--now-ink); background: var(--now); border-radius: 999px; padding: 2px 12px; font-weight: 700; text-decoration: none; }
+  .status { font-size: 15px; }
+  .status__pill { font-weight: 700; padding: 0 6px; }
+  .status__jump { color: var(--blue); font-weight: 700; text-underline-offset: 4px; }
 
   .passes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
   .pass {
     background: var(--surface);
     border: 1px solid var(--rule);
-    border-radius: 14px;
+    border-radius: 4px;
     padding: 14px 16px 12px;
     display: grid;
     gap: 10px;
+    box-shadow: 0 1px 0 var(--rule);
   }
   .pass__top { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: var(--ink-2); }
   .pass__dir { font-weight: 700; color: var(--ink); font-size: 14px; }
-  .pass__no { margin-left: auto; font-family: var(--f-mono); font-weight: 600; font-size: 14px; letter-spacing: .06em; color: var(--ink); }
+  .pass__no { margin-left: auto; font-family: var(--f-mono); font-weight: 700; font-size: 15px; letter-spacing: .06em; color: var(--ink); }
   .pass__route { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
   .pass__pt { display: grid; gap: 2px; }
   .pass__pt--end { text-align: right; }
-  .pass__iata { font-family: var(--f-display); font-weight: 700; font-size: 40px; line-height: .9; letter-spacing: .02em; }
-  .pass__time { font-family: var(--f-mono); font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; }
+  .pass__iata { font-family: var(--f-display); font-weight: 400; font-size: 40px; line-height: 1; letter-spacing: .03em; }
+  .pass__time { font-family: var(--f-mono); font-weight: 700; font-size: 16px; }
   .pass__term { font-size: 12px; color: var(--ink-2); }
   .pass__mid { display: grid; justify-items: center; gap: 4px; color: var(--ink-3); font-family: var(--f-mono); font-size: 12px; }
   .pass__track { position: relative; width: 100%; height: 18px; }
   .pass__track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px dashed var(--rule); }
   .pass__track .ico { position: absolute; left: 50%; top: 0; transform: translateX(-50%); background: var(--surface); padding-inline: 4px; width: 26px; color: var(--ink-2); }
-  .pass__foot { border-top: 1px dashed var(--rule); padding-top: 8px; display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--ink-2); }
+  /* 撕線：兩側各咬一個半圓缺口 */
+  .pass__foot { position: relative; border-top: 1.5px dashed var(--rule); padding-top: 8px; display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+  .pass__foot::before, .pass__foot::after {
+    content: "";
+    position: absolute; top: -9px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+  }
+  .pass__foot::before { left: -25px; clip-path: inset(0 0 0 50%); }
+  .pass__foot::after { right: -25px; clip-path: inset(0 50% 0 0); }
 
   .facts { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 14px; }
   .fact { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
-  .fact__k { font-size: 12px; color: var(--ink-3); letter-spacing: .06em; flex: none; }
+  .fact__k { font-size: 13px; color: var(--ink-3); flex: none; }
   .fact a { font-weight: 500; text-underline-offset: 3px; text-decoration-color: var(--rule); overflow-wrap: anywhere; }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-2); align-items: center; }
   .legend__i { display: inline-flex; align-items: center; gap: 5px; }
@@ -202,7 +150,7 @@
 
   /* ---------- day ---------- */
   .day { padding-block: 40px 16px; scroll-margin-top: 60px; }
-  .day + .day { border-top: 1px solid var(--rule); }
+  .day + .day { border-top: 1.5px dashed var(--rule); }
   .day[data-line="cc"] { --line: var(--cc); --on-line: var(--cc-on); }
   .day[data-line="ne"] { --line: var(--ne); --on-line: var(--ne-on); }
   .day[data-line="ew"] { --line: var(--ew); --on-line: var(--ew-on); }
@@ -213,15 +161,15 @@
   .day__head { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
   .day__md {
     font-family: var(--f-display);
-    font-weight: 700;
+    font-weight: 400;
     font-size: clamp(56px, 14vw, 80px);
     line-height: .8;
     font-variant-numeric: tabular-nums;
   }
   .day__meta { display: grid; gap: 4px; min-width: 0; }
-  .day__eyebrow { display: flex; align-items: center; gap: 8px; margin: 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; color: var(--ink-2); }
-  .day__bar { width: 28px; height: 6px; border-radius: 3px; background: var(--line); }
-  .day__theme { margin: 0; font-size: 22px; line-height: 1.25; font-weight: 700; text-wrap: balance; }
+  .day__eyebrow { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; color: var(--ink-2); }
+  .day__bar { width: 50px; height: 16px; --tape: var(--line); transform: rotate(-4deg); }
+  .day__theme { margin: 0; font-size: 24px; line-height: 1.3; font-weight: 700; text-wrap: balance; }
   .day__stats { margin: 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 
   .day__grid { max-width: 760px; }
@@ -234,27 +182,28 @@
     display: flex; flex-direction: column; align-items: flex-end;
     padding-top: 12px;
     font-family: var(--f-mono);
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 13.5px;
     line-height: 1.35;
-    font-variant-numeric: tabular-nums;
   }
-  .row__time .t-end { color: var(--ink-3); }
+  .row__time .t-end { color: var(--ink-3); font-weight: 400; }
   .row__time .t-label { font-family: var(--f-body); font-size: 12px; font-weight: 500; white-space: nowrap; }
+  /* 螢光筆劃過 */
   .row__now {
     margin-top: 6px;
     font-family: var(--f-body);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--now-ink);
-    background: var(--now);
-    border-radius: 4px;
-    padding: 0 5px;
+    background: linear-gradient(100deg, transparent 3%, var(--now) 6% 94%, transparent 97%) 0 65% / 100% 75% no-repeat;
+    padding: 0 4px;
+    white-space: nowrap;
   }
   .row__rail { position: relative; display: flex; justify-content: center; }
   .row__rail::before {
     content: "";
     position: absolute; top: 0; bottom: 0; left: 50%;
-    width: 4px; transform: translateX(-50%);
+    width: 3px; transform: translateX(-50%);
     background: var(--line);
   }
   .row--move .row__rail::before {
@@ -273,20 +222,19 @@
     background: var(--bg);
     border: 3px solid var(--line);
   }
+  /* 圓形編號貼紙 */
   .code {
     position: relative;
     margin-top: 10px;
-    min-width: 26px; height: 24px;
-    padding-inline: 5px;
-    border-radius: 7px;
+    width: 26px; height: 26px;
+    border-radius: 50%;
     background: var(--line);
     color: var(--on-line);
     font-family: var(--f-display);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 27px;
     text-align: center;
-    box-shadow: 0 0 0 3px var(--bg);
+    box-shadow: 0 0 0 3px var(--bg), 0 1px 2px 3px rgba(59, 47, 37, .12);
   }
 
   .row__body { min-width: 0; padding-block: 8px 12px; }
@@ -310,23 +258,34 @@
   .row--move.is-now .move { color: var(--ink); }
 
   .card {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--rule);
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 3px;
+    padding: 16px 12px 12px;
     display: grid;
     gap: 10px;
+    box-shadow: 0 1px 0 var(--rule);
   }
-  @media (min-width: 640px) { .card { padding: 12px 16px; } }
-  .row.is-now .card { border-color: var(--line); box-shadow: 0 0 0 1px var(--line); }
+  @media (min-width: 640px) { .card { padding: 16px 16px 12px; } }
+  .card::before {
+    content: "";
+    position: absolute; top: -8px; left: 20px;
+    width: 54px; height: 16px;
+    background: color-mix(in srgb, var(--line) 62%, transparent);
+    clip-path: var(--tape-clip);
+    transform: rotate(-4deg);
+  }
+  .rows > .row:nth-child(even) .card::before { left: auto; right: 28px; transform: rotate(3deg); }
+  .row.is-now .card { border-color: var(--now); box-shadow: 0 0 0 2px var(--now); }
   .places { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .place { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; }
   .place > .ico { margin-top: 3px; color: var(--ink-3); }
   .place__line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
   .place__name {
     color: var(--ink);
-    font-weight: 600;
-    font-size: 15.5px;
+    font-weight: 700;
+    font-size: 16px;
     line-height: 1.45;
     text-decoration: none;
     overflow-wrap: anywhere;
@@ -336,23 +295,24 @@
   .is-meal .place__name { color: var(--blue); }
   .is-booked .place__name { color: var(--red); }
   .tag {
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 700;
-    line-height: 1.7;
-    padding: 0 8px;
-    border-radius: 999px;
-    letter-spacing: .04em;
+    line-height: 1.6;
+    padding: 0 7px;
+    border-radius: 3px;
+    letter-spacing: .06em;
     white-space: nowrap;
   }
-  .tag--meal { background: var(--blue-soft); color: var(--blue); }
-  .tag--booked { background: var(--red-soft); color: var(--red); }
+  .tag--meal { border: 1px solid currentColor; color: var(--blue); }
+  /* 已預約：朱紅色的小印章 */
+  .tag--booked { border: 3px double currentColor; color: var(--red); padding: 0 6px; transform: rotate(-3deg); }
   .tag--suggest { border: 1px dashed var(--ink-3); color: var(--ink-2); line-height: 1.55; }
   .move__link { font-size: 12.5px; font-weight: 700; color: var(--blue); text-decoration: none; }
   .move__link .ext { width: 10px; height: 10px; margin-left: 2px; }
-  .place__hours { margin-top: 1px; font-family: var(--f-mono); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .place__hours { margin-top: 1px; font-size: 13px; color: var(--ink-3); }
   .notes { display: grid; gap: 4px; border-top: 1px dashed var(--rule); padding-top: 8px; }
   .note { margin: 0; font-size: 13.5px; color: var(--ink-2); display: flex; gap: 8px; }
-  .note::before { content: "備註"; flex: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--ink-3); padding-top: 2px; }
+  .note::before { content: "備註"; flex: none; font-size: 12px; font-weight: 700; color: var(--ink-3); padding-top: 1px; }
   .note + .note::before { visibility: hidden; }
 
   .pending {
@@ -365,10 +325,10 @@
   }
 
   .routes { display: grid; gap: 8px; margin-bottom: 22px; }
-  .routes__k { margin: 0; font-size: 12px; color: var(--ink-3); letter-spacing: .06em; }
+  .routes__k { margin: 0; font-size: 13px; color: var(--ink-3); }
   .seg {
     display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px;
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 12px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 3px;
     padding: 10px 14px; text-decoration: none; color: var(--ink);
   }
   .seg:hover { border-color: var(--line); }
@@ -379,20 +339,23 @@
   .nav-btn {
     display: inline-flex; align-items: center; gap: 3px;
     font-size: 12px; font-weight: 700; line-height: 1.7;
-    padding: 0 9px; border-radius: 999px;
+    padding: 0 8px; border-radius: 3px;
     background: var(--blue-soft); color: var(--blue);
     text-decoration: none; white-space: nowrap;
   }
   .nav-btn svg { width: 11px; height: 11px; }
   .status__next { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .foot { padding-block: 32px 48px; font-size: 12px; color: var(--ink-3); border-top: 1px solid var(--rule); }
+  .foot { padding-block: 32px 48px; font-size: 13px; color: var(--ink-3); border-top: 1.5px dashed var(--rule); }
 
 </style>
 </head>
-<body>
+<body class="paper">
 <nav class="nav" aria-label="日期">
   <div class="wrap nav__inner">
-    <a class="nav__brand" href="#top">SIN</a>
+    <div class="nav__crumb">
+      <a class="nav__home" href="../">旅行手帳</a><span class="nav__sep" aria-hidden="true">/</span>
+      <a class="nav__brand" href="#top">SIN</a>
+    </div>
     <div class="nav__tabs" id="tabs"></div>
   </div>
 </nav>
@@ -400,7 +363,7 @@
 <header class="wrap hero" id="top">
   <div class="hero__head">
     <p class="hero__eyebrow" id="eyebrow"></p>
-    <h1 class="hero__title"><span class="hero__code">SIN</span><span class="hero__name">新加坡</span></h1>
+    <h1 class="hero__title"><span class="hero__code stamp">SIN</span><span class="hero__name">新加坡</span></h1>
     <div class="status" id="status"></div>
   </div>
   <div class="passes" id="passes"></div>
@@ -461,9 +424,10 @@
 
   /* ---------- hero ---------- */
   var nights = dayDiff(first, last);
+  var fm = +first.slice(5, 7), lm = +last.slice(5, 7);
   document.getElementById("eyebrow").textContent =
-    first.slice(0, 4) + " · " + first.slice(5).replace("-", ".") + " – " + last.slice(5).replace("-", ".") +
-    " · " + (nights + 1) + " 天 " + nights + " 夜";
+    first.slice(0, 4) + " 年 " + fm + " 月 " + +first.slice(8) + " 日 – " + (lm !== fm ? lm + " 月 " : "") + +last.slice(8) + " 日，" +
+    (nights + 1) + " 天 " + nights + " 夜";
 
   document.getElementById("passes").innerHTML = T.flights.map(function (f) {
     return '<article class="pass">' +
@@ -618,7 +582,7 @@
 
     return '<section class="day" id="' + dayId(d.date) + '" data-line="' + d.line + '">' +
       '<header class="day__head"><span class="day__md">' + md(d.date) + '</span>' +
-        '<div class="day__meta"><p class="day__eyebrow"><span class="day__bar"></span>DAY ' + (di + 1) + ' · 週' + wd(d.date) + '</p>' +
+        '<div class="day__meta"><p class="day__eyebrow"><span class="day__bar tape" aria-hidden="true"></span>第 ' + (di + 1) + ' 天，週' + wd(d.date) + '</p>' +
         '<h2 class="day__theme">' + esc(d.theme) + '</h2>' +
         (stats.length ? '<p class="day__stats">' + stats.join(" · ") + '</p>' : '') + '</div></header>' +
       '<div class="day__grid">' + route + '<ol class="rows">' + rows + '</ol>' +
@@ -633,17 +597,17 @@
   var until = dayDiff(now.date, first);
   var dep = T.flights[0];
   if (until > 0) {
-    status = '<span class="status__pill">還有 ' + until + ' 天出發</span><span>' + md(dep.date) + '（' + wd(dep.date) + '）' + dep.from.time + ' ' + esc(dep.no) + ' 起飛</span>';
+    status = '<span class="status__pill marker">還有 ' + until + ' 天出發</span><span>' + md(dep.date) + '（' + wd(dep.date) + '）' + dep.from.time + ' ' + esc(dep.no) + ' 起飛</span>';
   } else if (now.date <= last) {
     var next = dests.filter(function (p) { return dayDiff(p.date, now.date) * 1440 + now.min < p.until; })[0];
-    status = '<span class="status__pill">旅程第 ' + (dayDiff(first, now.date) + 1) + ' 天</span>' +
+    status = '<span class="status__pill marker">旅程第 ' + (dayDiff(first, now.date) + 1) + ' 天</span>' +
       (nowFound ? '<a class="status__jump" href="#now">看現在的行程</a>' : '') +
       (next ? '<span class="status__next">下一站：<b>' + esc(next.name) + '</b>' + navBtn(next.q) + '</span>' : '');
   } else {
     status = '<span class="status__pill">旅程結束</span>';
   }
   document.getElementById("status").innerHTML = status;
-  document.getElementById("foot").textContent = "行程最後更新 " + T.updated.replace(/-/g, "/") + " · 時間皆為新加坡當地時間（UTC+8）";
+  document.getElementById("foot").textContent = "行程最後更新 " + T.updated.replace(/-/g, "/") + "。時間皆為新加坡當地時間（UTC+8）。";
 
   /* ---------- active tab ---------- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));

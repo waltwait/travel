@@ -3,76 +3,327 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Travel</title>
-<meta name="description" content="所有旅行的行程網站。">
+<title>旅行手帳</title>
+<meta name="description" content="每一趟旅行的行程，一趟一頁。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@700&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="assets/journal.css">
 <style>
-  :root {
-    --bg: #F1F4F2;
-    --surface: #FFFFFF;
-    --ink: #15201C;
-    --ink-2: #4B5853;
-    --ink-3: #75817C;
-    --rule: #D6DDD9;
-    --blue: #1D57BD;
-    --f-display: "Barlow Condensed", "Arial Narrow", "Noto Sans TC", sans-serif;
-    --f-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 12px;
+    background: var(--kraft);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.7;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color-scheme: dark;
-      --bg: #0D1311;
-      --surface: #161F1B;
-      --ink: #E5ECE8;
-      --ink-2: #A2AEA9;
-      --ink-3: #75817C;
-      --rule: #29342F;
-      --blue: #86B3FF;
+  @media (min-width: 720px) { body { padding: 40px 24px; } }
+  [hidden] { display: none !important; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+  /* 攤開的一頁手帳，右邊是綁住本子的鬆緊帶 */
+  .book {
+    position: relative;
+    max-width: 760px;
+    min-height: calc(100vh - 24px);
+    margin: 0 auto;
+    padding: 36px 20px 56px;
+    border-radius: 4px 10px 10px 4px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 24px 48px -28px rgba(0, 0, 0, .55);
+  }
+  @media (min-width: 720px) {
+    .book { padding: 56px 72px 72px 56px; min-height: calc(100vh - 80px); }
+    .book::after {
+      content: "";
+      position: absolute; top: 0; bottom: 0; right: 30px;
+      width: 7px;
+      background: #2E2621;
+      box-shadow: 1px 0 0 rgba(255, 255, 255, .08), 2px 0 6px rgba(0, 0, 0, .25);
     }
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--f-body); line-height: 1.6;
+
+  .book__title {
+    margin: 0 0 36px;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: .08em;
   }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 64px; }
-  h1 {
-    font-family: var(--f-display); font-weight: 700; font-size: 44px;
-    letter-spacing: .02em; line-height: 1; margin: 0 0 32px;
+
+  /* ---------- 下一趟 ---------- */
+  .next {
+    position: relative;
+    margin: 0 0 56px;
+    padding: 30px 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: 0 1px 0 var(--rule), 0 10px 22px -18px rgba(59, 47, 37, .5);
+    transform: rotate(-.6deg);
   }
-  .trips { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-  .trip {
-    display: flex; align-items: baseline; gap: 16px;
-    padding: 16px 18px; background: var(--surface);
-    border: 1px solid var(--rule); border-radius: 12px;
-    color: inherit; text-decoration: none;
+  @media (min-width: 720px) { .next { padding: 36px 34px 30px; } }
+  .next__tape { position: absolute; top: -11px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 110px; --tape: var(--cc); }
+  .next__count { margin: 0; font-size: 18px; color: var(--ink-2); }
+  .next__count b {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--red);
+    margin-inline: 2px;
+    vertical-align: -3px;
   }
-  .trip:hover { border-color: var(--blue); }
-  .trip__code {
-    font-family: var(--f-display); font-weight: 700; font-size: 28px;
-    line-height: 1; color: var(--blue); min-width: 3.2ch;
+  .next__city {
+    margin: 6px 0 2px;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(40px, 11vw, 60px);
+    line-height: 1.1;
+    letter-spacing: .06em;
   }
-  .trip__name { font-weight: 700; }
-  .trip__dates { font-family: var(--f-mono); font-size: 13px; color: var(--ink-3); }
+  .next__dates { margin: 0; display: flex; flex-wrap: wrap; gap: 0 14px; font-size: 16px; color: var(--ink-2); }
+  .next__dates span { white-space: nowrap; }
+  .next__today { margin: 10px 0 0; font-size: 17px; }
+  .next__today span { color: var(--ink-3); margin-right: 6px; }
+  .next__empty { margin: 0; font-size: 22px; font-weight: 700; }
+  .next__hint { margin: 6px 0 0; color: var(--ink-2); }
+
+  .stubs { display: grid; gap: 10px; margin: 22px 0 6px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+  /* 登機證票根：左邊一排撕線孔 */
+  .stub {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 2px 14px;
+    align-items: baseline;
+    padding: 10px 14px 10px 26px;
+    background: var(--bg);
+    border: 1px dashed var(--rule);
+    border-radius: 4px;
+  }
+  .stub::before {
+    content: "";
+    position: absolute; top: 6px; bottom: 6px; left: 9px;
+    width: 4px;
+    background: radial-gradient(circle, var(--rule) 1.6px, transparent 2px) 0 0 / 4px 8px repeat-y;
+  }
+  .stub__dir { font-size: 13px; color: var(--ink-3); }
+  .stub__date { font-size: 13px; color: var(--ink-2); text-align: right; }
+  .stub__route { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; margin-top: 2px; }
+  .stub__pt { display: grid; line-height: 1.25; font-family: var(--f-mono); font-size: 14px; }
+  .stub__pt b { font-family: var(--f-display); font-weight: 400; font-size: 24px; letter-spacing: .03em; }
+  .stub__plane { color: var(--ink-3); font-size: 14px; }
+  .stub__no { margin-left: 8px; font-family: var(--f-mono); font-weight: 700; font-size: 14px; letter-spacing: .05em; color: var(--ink); }
+
+  .open {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 9px 22px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: .08em;
+    text-decoration: none;
+  }
+  .open:hover { background: var(--blue); }
+
+  /* ---------- 印章牆 ---------- */
+  .wall__title {
+    display: flex; align-items: baseline; gap: 10px;
+    margin: 0 0 24px;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: .06em;
+  }
+  .wall__count { font-family: var(--f-body); font-weight: 400; font-size: 15px; color: var(--ink-3); letter-spacing: 0; }
+  .stamps {
+    list-style: none; margin: 0; padding: 8px 0 0;
+    display: flex; flex-wrap: wrap; gap: 28px 34px;
+  }
+  .stamps a { display: block; text-decoration: none; border-radius: 50%; }
+  .stamps li:nth-child(3n+2) a { border-radius: 8px; }
+  .stamps .stamp {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1px;
+    width: 156px; height: 156px;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    transform: rotate(var(--r, -6deg));
+    transition: transform .2s ease;
+  }
+  .stamps li:nth-child(3n+2) .stamp { width: 176px; height: 118px; border-radius: 8px; }
+  .stamps li:nth-child(3n) .stamp { width: 172px; height: 132px; border-radius: 50%; }
+  .stamps a:hover .stamp, .stamps a:focus-visible .stamp { transform: rotate(0deg) scale(1.04); }
+  @media (prefers-reduced-motion: reduce) { .stamps .stamp { transition: none; } }
+  .stamp__city { font-weight: 700; font-size: 14px; letter-spacing: .3em; margin-right: -.3em; }
+  .stamp__code { font-family: var(--f-display); font-size: 40px; line-height: 1; letter-spacing: .04em; }
+  .stamp__date { font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: .04em; }
+  .stamp__note { font-size: 12px; font-weight: 700; margin-top: 2px; }
 </style>
 </head>
 <body>
-<main>
-  <h1>TRAVEL</h1>
-  <ol class="trips">
-    <li>
-      <a class="trip" href="sin-2026-10/">
-        <span class="trip__code">SIN</span>
-        <span>
-          <span class="trip__name">新加坡</span><br>
-          <span class="trip__dates">2026/10/17 – 10/19</span>
-        </span>
-      </a>
-    </li>
-  </ol>
+<main class="book paper">
+  <h1 class="book__title">旅行手帳</h1>
+
+  <section class="next" id="next" aria-label="下一趟旅行" hidden></section>
+
+  <section class="wall" aria-labelledby="wall-title">
+    <h2 class="wall__title" id="wall-title">旅行紀錄<span class="wall__count" id="count"></span></h2>
+    <ol class="stamps" id="stamps"></ol>
+  </section>
 </main>
+
+<script>
+/*
+ * 所有旅行。新增一趟：在最上面加一筆。
+ *   dir   docs/ 底下的資料夾名（網址 /travel/{dir}/）
+ *   code  印章上的代碼，通常是機場代碼
+ *   city  地名
+ *   ink   印章墨色：red / blue / green / plum
+ * 日期、航班、每天的主題會自動從該資料夾的 itinerary.js 讀出來，不用重打。
+ */
+var TRIPS = [
+  { dir: "sin-2026-10", code: "SIN", city: "新加坡", ink: "red" }
+];
+
+(function () {
+  var WD = ["日", "一", "二", "三", "四", "五", "六"];
+  var TILT = [-7, 5, -3, 8, -5, 3];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function wd(date) { return WD[new Date(date + "T12:00:00Z").getUTCDay()]; }
+  function md(date) { var p = date.split("-"); return +p[1] + "/" + +p[2]; }
+  function dayDiff(a, b) { return Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 864e5); }
+  // 今天的日期（台灣時間）。網址加 ?today=2026-10-18 可以模擬別天
+  function today() {
+    var q = new URLSearchParams(location.search).get("today");
+    if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+    return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Taipei", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  }
+
+  // 一個一個載入各趟的 itinerary.js（每個檔案都會寫進 window.TRIP）
+  function loadTrip(t) {
+    return new Promise(function (resolve) {
+      var s = document.createElement("script");
+      s.src = t.dir + "/itinerary.js";
+      s.onload = function () { var data = window.TRIP; window.TRIP = undefined; resolve(data || null); };
+      s.onerror = function () { resolve(null); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function describe(t, data, now) {
+    var trip = { t: t, data: data };
+    if (!data) return trip;
+    var dates = (data.days || []).map(function (d) { return d.date; })
+      .concat((data.flights || []).map(function (f) { return f.date; }))
+      .sort();
+    if (!dates.length) return trip;
+    trip.first = dates[0];
+    trip.last = dates[dates.length - 1];
+    trip.until = dayDiff(now, trip.first);
+    trip.state = trip.until > 0 ? "upcoming" : now <= trip.last ? "ongoing" : "past";
+    return trip;
+  }
+
+  function range(a, b) {
+    var nights = dayDiff(a, b);
+    return '<span>' + md(a) + "（" + wd(a) + "）– " + md(b) + "（" + wd(b) + "）</span>" +
+      '<span>' + (nights + 1) + " 天 " + nights + " 夜</span>";
+  }
+
+  function stubs(flights) {
+    if (!flights || !flights.length) return "";
+    return '<div class="stubs">' + flights.map(function (f) {
+      return '<div class="stub">' +
+        '<span class="stub__dir">' + esc(f.dir) + '<span class="stub__no">' + esc(f.no) + '</span></span>' +
+        '<span class="stub__date">' + md(f.date) + '（' + wd(f.date) + '）</span>' +
+        '<span class="stub__route">' +
+          '<span class="stub__pt"><b>' + esc(f.from.code) + '</b>' + esc(f.from.time) + '</span>' +
+          '<span class="stub__plane" aria-hidden="true">✈</span>' +
+          '<span class="stub__pt"><b>' + esc(f.to.code) + '</b>' + esc(f.to.time) + '</span></span>' +
+      '</div>';
+    }).join("") + '</div>';
+  }
+
+  function renderNext(trip, now) {
+    var el = document.getElementById("next");
+    el.hidden = false;
+    if (!trip) {
+      el.innerHTML = '<span class="tape next__tape" aria-hidden="true"></span>' +
+        '<p class="next__empty">下一趟還沒決定</p>' +
+        '<p class="next__hint">排好行程後，會出現在這裡。</p>';
+      return;
+    }
+    var d = trip.data, t = trip.t, head, extra = "", href = t.dir + "/", cta = "打開行程";
+    if (trip.state === "ongoing") {
+      var n = dayDiff(trip.first, now) + 1;
+      var day = (d.days || []).filter(function (x) { return x.date === now; })[0];
+      head = '<p class="next__count">旅途中，第<b>' + n + '</b>天</p>';
+      if (day) {
+        extra = '<p class="next__today"><span>今天</span>' + esc(day.theme) + '</p>';
+        href = t.dir + "/#d" + now.slice(5).replace("-", "");
+        cta = "看今天的行程";
+      }
+    } else {
+      head = '<p class="next__count">' + (trip.until === 1 ? "明天就出發" : '還有<b>' + trip.until + '</b>天出發') + '</p>';
+    }
+    el.innerHTML = '<span class="tape next__tape" aria-hidden="true"></span>' + head +
+      '<h2 class="next__city">' + esc(t.city) + '</h2>' +
+      '<p class="next__dates">' + range(trip.first, trip.last) + '</p>' + extra +
+      (trip.state === "upcoming" ? stubs(d.flights) : '') +
+      '<a class="open" href="' + href + '">' + cta + '</a>';
+  }
+
+  function renderStamps(trips) {
+    document.getElementById("count").textContent = trips.length + " 趟";
+    document.getElementById("stamps").innerHTML = trips.map(function (trip, i) {
+      var t = trip.t;
+      var date = trip.first ? trip.first.replace(/-/g, ".") : "";
+      var note = trip.state === "upcoming" ? "即將出發" : trip.state === "ongoing" ? "旅途中" : "";
+      return '<li><a href="' + t.dir + '/" aria-label="' + esc(t.city) + (date ? " " + date : "") + '">' +
+        '<span class="stamp stamp--' + esc(t.ink || "red") + '" style="--r:' + TILT[i % TILT.length] + 'deg">' +
+          '<span class="stamp__city">' + esc(t.city) + '</span>' +
+          '<span class="stamp__code">' + esc(t.code) + '</span>' +
+          (date ? '<span class="stamp__date">' + date + '</span>' : '') +
+          (note ? '<span class="stamp__note">' + note + '</span>' : '') +
+        '</span></a></li>';
+    }).join("");
+  }
+
+  var now = today();
+  TRIPS.reduce(function (p, t) {
+    return p.then(function (list) {
+      return loadTrip(t).then(function (data) { return list.concat(describe(t, data, now)); });
+    });
+  }, Promise.resolve([])).then(function (trips) {
+    var dated = trips.filter(function (x) { return x.first; });
+    var ongoing = dated.filter(function (x) { return x.state === "ongoing"; })[0];
+    var upcoming = dated.filter(function (x) { return x.state === "upcoming"; })
+      .sort(function (a, b) { return a.first < b.first ? -1 : 1; })[0];
+    renderNext(ongoing || upcoming, now);
+    // 印章牆：新的在前，沒讀到日期的放最後
+    renderStamps(dated.sort(function (a, b) { return a.first < b.first ? 1 : -1; })
+      .concat(trips.filter(function (x) { return !x.first; })));
+  });
+})();
+</script>
 </body>
 </html>
