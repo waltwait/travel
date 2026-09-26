@@ -9,6 +9,12 @@
   - `itinerary.js`：行程資料，改行程只改這個檔案
 - `docs/index.html`：首頁（旅行手帳）。上面是下一趟的出發看板，下面是每趟一個印章的印章牆。旅行清單是頁面裡的 `TRIPS` 陣列（資料夾、代碼、地名、印章墨色）；日期、航班、每天主題會自動從各趟的 `itinerary.js` 讀出來。網址加 `?today=2026-10-18` 可以模擬別天
 - `docs/assets/journal.css`：首頁和行程頁共用的手帳樣式（顏色、字體、紙膠帶、印章），改這裡所有頁面一起變
+- 整個網站可以「加到主畫面」當 App（名稱 travel，從首頁打開，看過的頁面沒網路也能看）：
+  - `docs/manifest.webmanifest`：App 名稱、圖示、全螢幕設定
+  - `docs/sw.js`：離線快取。有網路就抓最新的，沒網路或 3 秒沒回應才用存下來的；改了快取邏輯要把 `CACHE` 的版本號加一
+  - `docs/assets/app.js`：註冊 `sw.js`、把這一頁連到的頁面先存起來、從背景回來超過 5 分鐘自動重新整理
+  - `docs/assets/icons/`：App 圖示（紅色「旅」字印章）
+  - 每一頁的 `<head>` 都要有 manifest、icon、apple-touch-icon、theme-color 那幾行，`</body>` 前要載入 `assets/app.js`（複製 `sin-2026-10/` 就會一起帶到）
 - 新增一趟網站：
   1. 複製 `docs/sin-2026-10/` 成新資料夾，改裡面的 `itinerary.js`
   2. 改新資料夾 `index.html` 裡寫死的當地資訊（搜尋「新加坡」「SIN」「Singapore」）：`<title>`、`description`、`nav__brand`、`hero__code`、`hero__name`、`sgNow()` 的 `timeZone`、票根底下的時差說明、頁尾的當地時間說明

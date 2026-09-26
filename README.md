@@ -13,10 +13,20 @@
 - `docs/`：GitHub Pages 的內容（Settings → Pages 設定為 `main` 分支的 `/docs`）
   - `docs/index.html`：首頁（旅行手帳）：下一趟的出發看板，和每趟一個印章的印章牆
   - `docs/assets/journal.css`：所有頁面共用的手帳樣式
+  - `docs/manifest.webmanifest`、`docs/sw.js`、`docs/assets/app.js`、`docs/assets/icons/`：讓網站可以加到主畫面當 App，沒網路也能看
   - `docs/{地點代碼}-{YYYY-MM}/`：一趟旅行的網站，改行程只要改裡面的 `itinerary.js`
 - `.claude/skills/`：規劃旅行用的 Claude Code skills（說明在 `CLAUDE.md`）
   - `/trip`（以及 `/trip-plan`、`/trip-research`、`/trip-go`、`/trip-review`、`/trip-pack`）：[fdjkgh580/claude-trip-skills](https://github.com/fdjkgh580/claude-trip-skills)
   - `travel-planner`（說「旅行計劃」「旅遊攻略」就會觸發）：[tianxingyang/skills-travel-planner](https://github.com/tianxingyang/skills-travel-planner)
+
+## 加到手機主畫面
+
+打開 https://waltwait.github.io/travel/ ：
+
+- iPhone（Safari）：點「分享」→「加入主畫面」
+- Android（Chrome）：點右上角 ⋮ →「加到主畫面」或「安裝應用程式」
+
+主畫面上會出現紅色「旅」字印章的 travel 圖示，打開是全螢幕的首頁。看過的行程沒網路也能看；導航和 Google 地圖連結還是要網路。
 
 ## 新增一趟旅行的網站
 
