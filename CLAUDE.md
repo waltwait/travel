@@ -14,6 +14,7 @@
   2. 改新資料夾 `index.html` 裡寫死的當地資訊（搜尋「新加坡」「SIN」「Singapore」）：`<title>`、`description`、`nav__brand`、`hero__code`、`hero__name`、`sgNow()` 的 `timeZone`、票根底下的時差說明、頁尾的當地時間說明
   3. 在 `docs/index.html` 的 `TRIPS` 最上面加一筆，並在 `README.md` 的表格加一列
 - 每天的紙膠帶顏色用 `itinerary.js` 每天的 `line`：`cc` 芥末黃、`ne` 乾燥玫瑰、`ew` 鼠尾草綠
+- 行程頁不放圖例：不要加「吃喝」「景點・逛街」「移動」「藍字 正餐」「紅字 已預約」「點地名開 Google 地圖」這類說明列，新增或改網站時也不要加回去
 - 網站只用相對路徑（例如 `src="itinerary.js"`、`href="../assets/journal.css"`），不要寫 `/` 開頭的絕對路徑，不然在 `/travel/` 底下會壞
 
 ## 已安裝的 skills（`.claude/skills/`）
