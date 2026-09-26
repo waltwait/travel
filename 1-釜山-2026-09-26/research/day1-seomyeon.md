@@ -1,0 +1,56 @@
+# 第一天（11/27 週五）：機場 → 海雲台放行李 → 西面 + 荒嶺山夜景
+
+> 研究日期：2026-09-26
+> 條件：落地先去飯店放行李、機場到海雲台搭大眾運輸、在西面一帶玩、晚上去荒嶺山烽燧臺、晚餐韓式烤肉、不排釜山 Pass 包含的景點（11/28、11/29 才用 Pass）
+
+## 釜山 Pass（Visit Busan Pass）
+
+免費入場 40 多個景點，主要在海雲台／Centum、南浦／中區、機張：釜山 X the SKY、海雲台 Blueline Park 海岸列車、松島海上纜車、Lotte World Adventure Busan、Spa Land Centum City、Club D Oasis、釜山塔、SEA LIFE 水族館等。西面、田浦、荒嶺山沒有 Pass 景點（荒嶺山免費），所以第一天排這一帶剛好。
+官方清單會換，出發前到 https://www.visitbusanpass.com/attractions/ 再看一次。
+
+## 交通
+
+- 機場 → 海雲台（大眾運輸）：釜山金海輕軌 機場站 → 沙上站（約 10 分鐘），轉地鐵 2 號線往萇山 장산 方向到海雲台站（約 50 分鐘），出站走到飯店約 8 分鐘。總共約 1 小時 20 分鐘
+- 其他選擇：計程車 40–60 分鐘、30,000–45,000 韓元；機場巴士 1 號線（海雲台）60–110 分鐘、9,500 韓元
+- 海雲台 → 田浦：2 號線往沙上方向約 30 分鐘（田浦是西面的前一站）；西面 → 海雲台約 35 分鐘
+- T-money 交通卡在機場便利商店買，儲值只收現金
+
+## 飯店：Kwangsu Hotel 광수호텔
+
+- 부산 해운대구 해운대해변로221번길 22，走路 4 分鐘到海雲台海水浴場
+- 15:00 入住、11:00 退房，前台 24 小時，可寄放行李；22:00 後入住要先跟櫃台說
+
+## 荒嶺山烽燧臺 황령산 봉수대
+
+- 11/27 日落 17:13，民用曙暮光結束約 17:40（用 NOAA 公式算，座標 35.157, 129.08）
+- 計程車目的地設「황령산 전망쉼터」（展望休息區），才會開到展望台下面；從西面、廣安一帶約 15 分鐘，金蓮山站 6 號出口出發約 6–7 千韓元
+- 展望休息區走到烽燧臺約 10 分鐘；休息區有望遠鏡、廁所，咖啡廳 블루뱅 營業到凌晨 2 點
+- 看得到廣安大橋、海雲台 Marine City
+- 下山：路邊計程車少，用 Kakao T 叫車；走路下山約 1 小時 20 分鐘
+
+## 吃
+
+- 午餐：海雲台元祖奶奶湯飯 해운대원조할매국밥（중동1로 40，海雲台站 3 號出口附近，1962 年開業，牛肉湯飯）。營業時間資料不一：10:00–19:00 或 07:00–20:00，14:00 吃兩種都有開
+- 晚餐：烤肉男 고기굽는남자 西面店（부전동 168-367，11:00–00:30）。常客滿，建議用 CatchTable 先線上排隊
+- 其他西面烤肉：오십사（CatchTable 可預約）、온담、83해치、두루미、대삼식당（冷凍五花）
+
+## 田浦咖啡街 전포카페거리
+
+- 田浦站、西面站走路就到，旁邊是田浦工具街 전포공구길
+- 店家開關常變，現場挑
+
+## 西面逛街
+
+- 西面地下街、Olive Young：多數開到 22:00 左右
+- 樂天百貨釜山本店週五大多開到 20:30，晚餐後來不及，這次不排
+
+## 來源
+
+- 飯店：[Agoda](https://www.agoda.com/ko-kr/kwangsu-hotel/hotel/busan-kr.html)、[Trip.com](https://kr.trip.com/hotels/busan-hotel-detail-100412209/kwangsu-hotel-haeundae/)、[여기어때](https://www.yeogi.com/domestic-accommodations/88393)
+- 釜山 Pass：[visitbusanpass.com](https://www.visitbusanpass.com/)、[KKday](https://www.kkday.com/en/blog/93073/visit-busan-pass)、[busanpassguide](https://busanpassguide.cn/en/attractions.html)
+- 機場交通：[mileasia](https://mileasia.com/korea/busan-airport-to-haeundae-beach/)、[busanwith 機場巴士](https://busanwith.com/gimhae-airport-limousine-bus-schedule/)
+- 荒嶺山：[부산광역시 스토리](https://www.busan.go.kr/news/storyreport/view?dataNo=63824)、[Visit Busan](https://www.visitbusan.net/v/7AC)、[telltrip](https://www.telltrip.com/domestic-travel/hwangnyeongsan-bongsu-busan-night-view-free/)
+- 午餐：[다이닝코드](https://www.diningcode.com/profile.php?rid=beOcPBWDiFNE)、[식신](https://www.siksinhot.com/P/256499)
+- 晚餐：[다이닝코드 고기굽는남자](https://www.diningcode.com/profile.php?rid=RkVUfCUkbuNY)、[다이닝코드 서면 고기집](https://www.diningcode.com/list.dc?query=%EC%84%9C%EB%A9%B4+%EA%B3%A0%EA%B8%B0%EC%A7%91)
+- 田浦咖啡街：[Visit Busan](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000202003001000&uc_seq=355&lang_cd=ko)、[인터파크](http://tour.interpark.com/freeya/ThemeView.aspx?seq=11726)
+- 座標：OpenStreetMap Nominatim

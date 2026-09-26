@@ -16,7 +16,8 @@
  *   （每天的 from：整天路線的出發地，例如飯店）
  *   （每天的 pending：還沒排的提醒，顯示在當天最下面）
  *   links         額外連結，例如 [{ text: "客運時刻表", url: "https://..." }]
- *   q / to        移動的目的地：q 是 Google 地圖搜尋字，to 是顯示用的短名稱
+ *   q / to / at   移動的目的地：q 是 Naver Map 搜尋字（韓文最準），to 是顯示用的短名稱，
+ *                 at 是座標 [緯度, 經度]
  *
  * places 裡每一個地點：
  *   kind:    "food" 吃喝 ／ "spot" 景點、逛街、活動
@@ -25,13 +26,18 @@
  *   booked:  已預約的標籤文字（會以紅字標示），例如 "已訂位"
  *   suggest: true 表示是 Claude 建議加進來的
  *   hours:   營業時間
- *   q:       Google 地圖搜尋關鍵字（省略就用 name 搜尋）
+ *   q:       Naver Map 搜尋關鍵字（省略就用 name 搜尋；韓文最準）
+ *   at:      座標 [緯度, 經度]，可省略
  *
- * 有 q（或 name）的地點會出現「導航」按鈕，並依時間順序串進「整天路線」。
+ * 地圖連結都開 Naver Map（韓國的 Google 地圖不能導航）。點地名是搜尋；
+ * 「導航」在手機上直接開 Naver Map App：有 at 就從目前位置規劃大眾運輸路線，
+ * 沒有 at 就先搜尋 q，再從搜尋結果按路線。電腦上兩個都開 Naver Map 網頁搜尋。
  * 分店不確定的地點請把 q 改成有分店名或地址的關鍵字，導航才會準。
  *
  * flights 的 utc 是機場所在地的時區（台灣 8、韓國 9），用來算飛行時間。
  */
+var HOTEL = { name: "Kwangsu Hotel", q: "광수호텔 해운대", at: [35.1595, 129.1561] };
+
 window.TRIP = {
   updated: "2026-09-26",
 
@@ -54,24 +60,67 @@ window.TRIP = {
     }
   ],
 
-  // 訂好住宿後改成 { name: "飯店名稱", q: "Google 地圖搜尋字" }
-  hotel: null,
+  hotel: HOTEL,
 
   days: [
     {
       date: "2026-11-27",
-      theme: "抵達釜山",
+      theme: "西面 + 荒嶺山夜景",
       line: "cc",
       items: [
         { type: "move", start: "08:25", end: "11:30", flight: "JX900", title: "搭飛機 JX900", note: "桃機 T1 → 金海 國際線" },
-        { type: "move", start: "11:30", title: "抵達釜山", note: "入境、領行李", q: "Gimhae International Airport", to: "金海機場" }
-      ],
-      pending: "落地之後的行程還沒排。"
+        { type: "move", start: "11:30", end: "12:30", title: "入境、領行李", notes: ["在機場便利商店買 T-money 交通卡並儲值，儲值只收現金"], q: "김해국제공항", at: [35.1801, 128.9364], to: "金海機場" },
+        { type: "move", start: "12:30", end: "12:45", title: "輕軌 機場站 → 沙上站", note: "釜山金海輕軌，約 10 分鐘", q: "사상역", at: [35.1625, 128.9890], to: "沙上站" },
+        { type: "move", start: "12:45", end: "13:40", title: "地鐵 2 號線 沙上 → 海雲台", notes: ["往萇山 장산 方向，約 50 分鐘", "出輕軌站走到 2 號線月台約 5 分鐘"], q: "해운대역 부산", at: [35.1638, 129.1587], to: "海雲台站" },
+        { type: "move", start: "13:40", end: "13:50", title: "走到飯店放行李", notes: ["約 8 分鐘", "15:00 才能入住，行李先寄放在櫃台", "今天會 22:00 後才回來，跟櫃台說一聲"], q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
+        {
+          type: "stop", start: "14:00", end: "14:45",
+          notes: ["1962 年開的老店，招牌是牛肉湯飯 소고기국밥", "在海雲台站 3 號出口附近，吃完直接搭地鐵"],
+          places: [
+            { kind: "food", meal: "午餐", name: "海雲台元祖奶奶湯飯 해운대원조할매국밥", hours: "10:00–19:00", q: "해운대원조할매국밥", at: [35.1620, 129.1633] }
+          ]
+        },
+        { type: "move", start: "14:45", end: "15:20", title: "地鐵 2 號線 海雲台 → 田浦", notes: ["往沙上 사상 方向，約 30 分鐘", "田浦是西面的前一站"], q: "전포역", at: [35.1528, 129.0653], to: "田浦站" },
+        {
+          type: "stop", start: "15:20", end: "16:30",
+          notes: ["咖啡廳很多，現場挑一家喝咖啡、拍照", "旁邊的田浦工具街 전포공구길 是老五金行改成的小店，順便逛"],
+          places: [
+            { kind: "spot", name: "田浦咖啡街 전포카페거리", q: "전포카페거리" }
+          ]
+        },
+        { type: "move", start: "16:30", end: "16:50", title: "搭計程車上荒嶺山", notes: ["約 15–20 分鐘", "跟司機說「황령산 전망쉼터」，才會開到展望台下面，不是登山口"], q: "황령산 전망쉼터", at: [35.1580, 129.0827], to: "荒嶺山展望休息區" },
+        {
+          type: "stop", start: "16:50", end: "18:15",
+          notes: ["日落 17:13，17:40 左右天全黑，夜景最漂亮", "從展望休息區走到烽燧臺約 10 分鐘", "看得到廣安大橋和海雲台", "山上風大，11 月底晚上很冷，帶外套"],
+          places: [
+            { kind: "spot", name: "荒嶺山烽燧臺 황령산 봉수대", q: "황령산 봉수대", at: [35.1572, 129.0819] },
+            { kind: "food", name: "展望休息區咖啡廳 블루뱅", hours: "營業到凌晨 2 點", q: "황령산 전망쉼터", at: [35.1580, 129.0827] }
+          ]
+        },
+        { type: "move", start: "18:15", end: "18:45", title: "搭計程車下山回西面", notes: ["山上很少計程車經過，用 Kakao T 叫車", "約 15 分鐘"], q: "고기굽는남자 서면점", at: [35.1571, 129.0615], to: "烤肉店" },
+        {
+          type: "stop", start: "18:45", end: "20:15",
+          notes: ["週五晚上常要排隊，下山前先用 CatchTable 線上排隊"],
+          places: [
+            { kind: "food", meal: "晚餐", name: "烤肉男 고기굽는남자 西面店", hours: "11:00–00:30", q: "고기굽는남자 서면점", at: [35.1571, 129.0615] }
+          ]
+        },
+        {
+          type: "stop", start: "20:15", end: "21:45",
+          notes: ["地下街和 Olive Young 大多 22:00 左右關門"],
+          places: [
+            { kind: "spot", name: "西面地下街 서면지하상가", q: "서면지하상가", at: [35.1559, 129.0591] },
+            { kind: "spot", name: "Olive Young 西面", q: "올리브영 서면" }
+          ]
+        },
+        { type: "move", start: "21:45", end: "22:30", title: "地鐵 2 號線 西面 → 海雲台，回飯店入住", notes: ["往萇山 장산 方向，約 35 分鐘", "出站走回飯店約 8 分鐘"], q: HOTEL.q, at: HOTEL.at, to: HOTEL.name }
+      ]
     },
     {
       date: "2026-11-28",
       theme: "待安排",
       line: "ne",
+      from: { q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
       items: [],
       pending: "這天的行程還沒排。"
     },
@@ -79,6 +128,7 @@ window.TRIP = {
       date: "2026-11-29",
       theme: "待安排",
       line: "ew",
+      from: { q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
       items: [],
       pending: "這天的行程還沒排。"
     },
@@ -86,6 +136,7 @@ window.TRIP = {
       date: "2026-11-30",
       theme: "回台灣",
       line: "cc",
+      from: { q: HOTEL.q, at: HOTEL.at, to: HOTEL.name },
       items: [
         { type: "move", start: "12:30", end: "14:15", flight: "JX901", title: "搭飛機 JX901", note: "金海 國際線 → 桃機 T1" },
         { type: "move", start: "14:15", title: "抵達桃園", note: "入境、領行李" }
