@@ -7,6 +7,7 @@
 | 旅行 | 日期 | 網址 |
 | --- | --- | --- |
 | 新加坡 | 2026/10/17–10/19 | https://waltwait.github.io/travel/sin-2026-10/ |
+| 釜山 | 2026/11/27–11/30 | https://waltwait.github.io/travel/pus-2026-11/ |
 
 ## 結構
 

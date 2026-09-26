@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>釜山 PUS 2026</title>
+<meta name="description" content="2026/11/27–11/30 釜山四天三夜行程：航班、每日時間軸、地圖連結。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@700&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="../assets/journal.css">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Travel">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F3ECDC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#231D17" media="(prefers-color-scheme: dark)">
+<style>
+  /* 顏色、字體、紙膠帶、印章都在 ../assets/journal.css */
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 1080px; margin-inline: auto; padding-inline: 16px; }
+  @media (min-width: 640px) { .wrap { padding-inline: 28px; } }
+  .ico { width: 18px; height: 18px; flex: none; display: inline-block; vertical-align: middle; }
+  .ico svg { width: 100%; height: 100%; display: block; }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav__inner { display: flex; align-items: center; gap: 12px; min-height: 52px; }
+  .nav__crumb { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+  .nav__home { font-size: 14px; color: var(--ink-2); text-decoration: none; }
+  .nav__home:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .nav__sep { color: var(--ink-3); }
+  .nav__brand {
+    font-family: var(--f-display);
+    font-size: 22px;
+    letter-spacing: .03em;
+    text-decoration: none;
+    color: var(--red);
+  }
+  .nav__tabs { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .nav__tabs::-webkit-scrollbar { display: none; }
+  /* 筆記本側邊的索引標籤 */
+  .tab {
+    display: flex; align-items: center; gap: 5px;
+    padding: 5px 11px 3px;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 3px solid var(--line);
+    text-decoration: none;
+    color: var(--ink-2);
+    font-family: var(--f-mono);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .tab__dot { display: none; }
+  .tab__wd { font-family: var(--f-body); font-size: 13px; font-weight: 400; }
+  .tab.is-active { background: color-mix(in srgb, var(--line) 55%, transparent); color: var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero { padding-block: 32px 8px; display: grid; gap: 22px; }
+  .hero__eyebrow { margin: 0; font-size: 15px; color: var(--ink-2); }
+  .hero__title { margin: 14px 0 6px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px; }
+  /* 入境章 */
+  .hero__code {
+    display: inline-block;
+    padding: 10px 20px 4px;
+    border-radius: 12px;
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(56px, 15vw, 96px);
+    line-height: 1;
+    letter-spacing: .04em;
+    transform: rotate(-4deg);
+  }
+  .hero__name { font-family: var(--f-display); font-size: clamp(28px, 6.4vw, 40px); font-weight: 700; line-height: 1.2; letter-spacing: .08em; }
+  .hero__head { display: grid; gap: 10px; }
+  .status {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+    font-size: 14px; color: var(--ink-2);
+  }
+  .status { font-size: 15px; }
+  .status__pill { font-weight: 700; padding: 0 6px; }
+  .status__jump { color: var(--blue); font-weight: 700; text-underline-offset: 4px; }
+
+  .passes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .pass {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 14px 16px 12px;
+    display: grid;
+    gap: 10px;
+    box-shadow: 0 1px 0 var(--rule);
+  }
+  .pass__top { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: var(--ink-2); }
+  .pass__dir { font-weight: 700; color: var(--ink); font-size: 14px; }
+  .pass__no { margin-left: auto; font-family: var(--f-mono); font-weight: 700; font-size: 15px; letter-spacing: .06em; color: var(--ink); }
+  .pass__route { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+  .pass__pt { display: grid; gap: 2px; }
+  .pass__pt--end { text-align: right; }
+  .pass__iata { font-family: var(--f-display); font-weight: 400; font-size: 40px; line-height: 1; letter-spacing: .03em; }
+  .pass__time { font-family: var(--f-mono); font-weight: 700; font-size: 16px; }
+  .pass__term { font-size: 12px; color: var(--ink-2); }
+  .pass__mid { display: grid; justify-items: center; gap: 4px; color: var(--ink-3); font-family: var(--f-mono); font-size: 12px; }
+  .pass__track { position: relative; width: 100%; height: 18px; }
+  .pass__track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px dashed var(--rule); }
+  .pass__track .ico { position: absolute; left: 50%; top: 0; transform: translateX(-50%); background: var(--surface); padding-inline: 4px; width: 26px; color: var(--ink-2); }
+  /* 撕線：兩側各咬一個半圓缺口 */
+  .pass__foot { position: relative; border-top: 1.5px dashed var(--rule); padding-top: 8px; display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+  .pass__foot::before, .pass__foot::after {
+    content: "";
+    position: absolute; top: -9px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+  }
+  .pass__foot::before { left: -25px; clip-path: inset(0 0 0 50%); }
+  .pass__foot::after { right: -25px; clip-path: inset(0 50% 0 0); }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 14px; }
+  .fact { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+  .fact__k { font-size: 13px; color: var(--ink-3); flex: none; }
+  .fact a { font-weight: 500; text-underline-offset: 3px; text-decoration-color: var(--rule); overflow-wrap: anywhere; }
+
+  /* ---------- day ---------- */
+  .day { padding-block: 40px 16px; scroll-margin-top: 60px; }
+  .day + .day { border-top: 1.5px dashed var(--rule); }
+  .day[data-line="cc"] { --line: var(--cc); --on-line: var(--cc-on); }
+  .day[data-line="ne"] { --line: var(--ne); --on-line: var(--ne-on); }
+  .day[data-line="ew"] { --line: var(--ew); --on-line: var(--ew-on); }
+  .tab[data-line="cc"] { --line: var(--cc); }
+  .tab[data-line="ne"] { --line: var(--ne); }
+  .tab[data-line="ew"] { --line: var(--ew); }
+
+  .day__head { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+  .day__md {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(56px, 14vw, 80px);
+    line-height: .8;
+    font-variant-numeric: tabular-nums;
+  }
+  .day__meta { display: grid; gap: 4px; min-width: 0; }
+  .day__eyebrow { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; color: var(--ink-2); }
+  .day__bar { width: 50px; height: 16px; --tape: var(--line); transform: rotate(-4deg); }
+  .day__theme { margin: 0; font-size: 24px; line-height: 1.3; font-weight: 700; text-wrap: balance; }
+  .day__stats { margin: 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+  .day__grid { max-width: 760px; }
+
+  /* ---------- timeline ---------- */
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .row { display: grid; grid-template-columns: 2.9rem 24px minmax(0, 1fr); column-gap: 8px; }
+  @media (min-width: 640px) { .row { grid-template-columns: 3.4rem 28px minmax(0, 1fr); column-gap: 12px; } }
+  .row__time {
+    display: flex; flex-direction: column; align-items: flex-end;
+    padding-top: 12px;
+    font-family: var(--f-mono);
+    font-weight: 700;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+  .row__time .t-end { color: var(--ink-3); font-weight: 400; }
+  .row__time .t-label { font-family: var(--f-body); font-size: 12px; font-weight: 500; white-space: nowrap; }
+  .row__time .t-day { font-size: 11.5px; color: var(--red); white-space: nowrap; }
+  .row__time .t-tz { font-family: var(--f-body); font-size: 11.5px; font-weight: 500; color: var(--ink-3); white-space: nowrap; }
+  /* 螢光筆劃過 */
+  .row__now {
+    margin-top: 6px;
+    font-family: var(--f-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--now-ink);
+    background: linear-gradient(100deg, transparent 3%, var(--now) 6% 94%, transparent 97%) 0 65% / 100% 75% no-repeat;
+    padding: 0 4px;
+    white-space: nowrap;
+  }
+  .row__rail { position: relative; display: flex; justify-content: center; }
+  .row__rail::before {
+    content: "";
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 3px; transform: translateX(-50%);
+    background: var(--line);
+  }
+  .row--move .row__rail::before {
+    background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 11px);
+  }
+  .rows > .row:first-child .row__rail::before { top: 18px; }
+  .rows > .row:last-child .row__rail::before { bottom: auto; height: 22px; }
+  .rows > .row:first-child:last-child .row__rail::before { display: none; }
+  .row--move:first-child .row__rail::after,
+  .row--move:last-child .row__rail::after {
+    content: "";
+    position: relative;
+    margin-top: 13px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--line);
+  }
+  /* 圓形編號貼紙 */
+  .code {
+    position: relative;
+    margin-top: 10px;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--line);
+    color: var(--on-line);
+    font-family: var(--f-display);
+    font-size: 15px;
+    line-height: 27px;
+    text-align: center;
+    box-shadow: 0 0 0 3px var(--bg), 0 1px 2px 3px rgba(59, 47, 37, .12);
+  }
+
+  .row__body { min-width: 0; padding-block: 8px 12px; }
+  .row--move .row__body, .row--free .row__body { padding-block: 10px 14px; }
+  .row--free .row__rail::before {
+    background: repeating-linear-gradient(to bottom, var(--line) 0 3px, transparent 3px 8px);
+    opacity: .55;
+  }
+  .free { margin: 0; padding-top: 1px; font-size: 13.5px; color: var(--ink-3); }
+  .move { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14px; color: var(--ink-2); padding-top: 1px; }
+  .move .ico { color: var(--ink-3); }
+  .move__title { color: var(--ink); font-weight: 500; text-decoration: none; }
+  a.move__title { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  .move__note {
+    font-size: 12px;
+    padding: 0 7px;
+    border-radius: 4px;
+    background: var(--rule-2);
+    color: var(--ink-2);
+  }
+  .row--move.is-now .move { color: var(--ink); }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 16px 12px 12px;
+    display: grid;
+    gap: 10px;
+    box-shadow: 0 1px 0 var(--rule);
+  }
+  @media (min-width: 640px) { .card { padding: 16px 16px 12px; } }
+  .card::before {
+    content: "";
+    position: absolute; top: -8px; left: 20px;
+    width: 54px; height: 16px;
+    background: color-mix(in srgb, var(--line) 62%, transparent);
+    clip-path: var(--tape-clip);
+    transform: rotate(-4deg);
+  }
+  .rows > .row:nth-child(even) .card::before { left: auto; right: 28px; transform: rotate(3deg); }
+  .row.is-now .card { border-color: var(--now); box-shadow: 0 0 0 2px var(--now); }
+  .places { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .place { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; }
+  .place > .ico { margin-top: 3px; color: var(--ink-3); }
+  .place__line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+  .place__name {
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.45;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .place__name:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .place__name .ext { display: inline-block; width: 11px; height: 11px; margin-left: 3px; vertical-align: 1px; opacity: .55; }
+  .is-meal .place__name { color: var(--blue); }
+  .is-booked .place__name { color: var(--red); }
+  .tag {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+    padding: 0 7px;
+    border-radius: 3px;
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+  .tag--meal { border: 1px solid currentColor; color: var(--blue); }
+  /* 已預約：朱紅色的小印章 */
+  .tag--booked { border: 3px double currentColor; color: var(--red); padding: 0 6px; transform: rotate(-3deg); }
+  .tag--suggest { border: 1px dashed var(--ink-3); color: var(--ink-2); line-height: 1.55; }
+  .move__link { font-size: 12.5px; font-weight: 700; color: var(--blue); text-decoration: none; }
+  .move__link .ext { width: 10px; height: 10px; margin-left: 2px; }
+  .place__hours { margin-top: 1px; font-size: 13px; color: var(--ink-3); }
+  .notes { display: grid; gap: 4px; border-top: 1px dashed var(--rule); padding-top: 8px; }
+  .note { margin: 0; font-size: 13.5px; color: var(--ink-2); display: flex; gap: 8px; }
+  .note::before { content: "備註"; flex: none; font-size: 12px; font-weight: 700; color: var(--ink-3); padding-top: 1px; }
+  .note + .note::before { visibility: hidden; }
+
+  .pending {
+    margin-top: 16px;
+    border: 1.5px dashed var(--rule);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--ink-2);
+    font-size: 14px;
+  }
+
+  .routes { display: grid; gap: 8px; margin-bottom: 22px; }
+  .routes__k { margin: 0; font-size: 13px; color: var(--ink-3); }
+  .seg {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 3px;
+    padding: 10px 14px; text-decoration: none; color: var(--ink);
+  }
+  .seg:hover { border-color: var(--line); }
+  .seg__stops { font-size: 13px; line-height: 1.55; color: var(--ink-2); overflow-wrap: anywhere; }
+  .seg__stops b { color: var(--ink); font-weight: 600; }
+  .seg__go { display: inline-flex; align-items: center; gap: 3px; font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--blue); }
+  .seg__go .ext { width: 11px; height: 11px; flex: none; }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 12px; font-weight: 700; line-height: 1.7;
+    padding: 0 8px; border-radius: 3px;
+    background: var(--blue-soft); color: var(--blue);
+    text-decoration: none; white-space: nowrap;
+  }
+  .nav-btn svg { width: 11px; height: 11px; }
+  .status__next { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .foot { padding-block: 32px 48px; font-size: 13px; color: var(--ink-3); border-top: 1.5px dashed var(--rule); }
+  .fab { display: none; }
+
+  /* ---------- 手機：邊走邊看（640px 以上完全不受影響） ---------- */
+  @media (max-width: 639px) {
+    /* 底部留位置給日期分頁（52px），旅途中再加浮動按鈕（52px + 上下各 10px） */
+    body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
+    body.has-fab { padding-bottom: calc(124px + env(safe-area-inset-bottom, 0px)); }
+
+    /* 頂部只留「旅行手帳 / PUS」。毛玻璃搬到 ::before，
+       因為 .nav 本身有 backdrop-filter 的話，裡面 fixed 的日期分頁會被綁在 .nav 裡 */
+    .nav { background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .nav::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: var(--bg);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    /* 日期分頁固定在最下面，平分寬度；上緣是當天的紙膠帶色 */
+    .nav__tabs {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      margin: 0; gap: 0;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: var(--surface);
+      box-shadow: 0 -1px 0 var(--rule);
+    }
+    .tab {
+      flex: 1 0 auto;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 10px;
+      border-radius: 0;
+      border-bottom: 0;
+      border-top: 4px solid var(--line);
+      font-size: 15px;
+    }
+
+    /* 下一站浮動按鈕：浮在日期分頁上方，整顆都是導航連結 */
+    .fab {
+      position: fixed; z-index: 11;
+      left: 12px; right: 12px;
+      bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+      display: flex; align-items: center; gap: 10px;
+      min-height: 52px;
+      padding: 6px 6px 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .16);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .fab__k { flex: none; font-size: 13px; font-weight: 700; color: var(--ink-3); }
+    .fab__name { flex: 1; min-width: 0; font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fab__go {
+      flex: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      min-height: 40px; padding: 0 16px;
+      border-radius: 6px;
+      background: var(--blue); color: var(--surface);
+      font-size: 15px; font-weight: 700;
+    }
+    .fab__go svg { width: 13px; height: 13px; }
+
+    /* Google 地圖路線收成一排「早上」「下午」「晚上」小按鈕，站名先藏起來 */
+    .routes { display: flex; flex-wrap: wrap; gap: 8px; }
+    .routes__k { flex-basis: 100%; }
+    .seg { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; }
+    .seg__stops { font-size: 15px; }
+    .seg__list, .seg__open { display: none; }
+    .seg__go .ext { width: 12px; height: 12px; }
+
+    /* 導航按鈕看起來 36px 高，手指點得到的範圍往上下各擴 4px 到 44px */
+    .nav-btn { position: relative; min-height: 36px; padding: 0 12px; gap: 5px; border-radius: 6px; font-size: 14px; }
+    .nav-btn svg { width: 13px; height: 13px; }
+    .nav-btn::after { content: ""; position: absolute; inset: -4px 0; }
+
+    /* 「看現在的行程」跳過去時，進行中那一列不要被頂部擋住 */
+    .row { scroll-margin-top: 64px; }
+  }
+
+</style>
+</head>
+<body class="paper">
+<nav class="nav" aria-label="日期">
+  <div class="wrap nav__inner">
+    <div class="nav__crumb">
+      <a class="nav__home" href="../">旅行手帳</a><span class="nav__sep" aria-hidden="true">/</span>
+      <a class="nav__brand" href="#top">PUS</a>
+    </div>
+    <div class="nav__tabs" id="tabs"></div>
+  </div>
+</nav>
+
+<header class="wrap hero" id="top">
+  <div class="hero__head">
+    <p class="hero__eyebrow" id="eyebrow"></p>
+    <h1 class="hero__title"><span class="hero__code stamp">PUS</span><span class="hero__name">釜山</span></h1>
+    <div class="status" id="status"></div>
+  </div>
+  <div class="passes" id="passes"></div>
+  <div class="facts" id="facts"></div>
+</header>
+
+<main class="wrap" id="days"></main>
+
+<footer class="wrap foot" id="foot"></footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" hidden></a>
+
+<script src="itinerary.js"></script>
+<script>
+(function () {
+  var T = window.TRIP;
+  var WD = ["日", "一", "二", "三", "四", "五", "六"];
+  var ICON = {
+    food: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.5h17a8.5 8.5 0 0 1-17 0z"/><path d="M8 20.5h8"/><path d="M14 3.5 10.5 11M19 4l-6 7"/></svg>',
+    spot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 0 0-14 0c0 5.7 7 11.8 7 11.8z"/><circle cx="12" cy="9.7" r="2.6"/></svg>',
+    move: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="14" rx="3.5"/><path d="M5 10h14"/><circle cx="9" cy="13.5" r=".6" fill="currentColor"/><circle cx="15" cy="13.5" r=".6" fill="currentColor"/><path d="m8.5 17-2 4M15.5 17l2 4"/></svg>',
+    plane: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.8a1.5 1.5 0 0 0-3 0v4.7l-8 5v2l8-2.5v5.2L7.5 19.5V21l4-1 4 1v-1.5L13 18.2V13z" transform="rotate(90 12 12)"/></svg>',
+    go: '<svg viewBox="0 0 12 12" fill="currentColor"><path d="M11 1 1 5.2l4.3 1.5L6.8 11z"/></svg>',
+    ext: '<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4.5 2.5h5v5M9.5 2.5 3 9"/></svg>'
+  };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function navUrl(q) { return "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(q); }
+  function navBtn(q) { return '<a class="nav-btn" href="' + navUrl(q) + '" target="_blank" rel="noopener">' + ICON.go + '導航</a>'; }
+  function mapUrl(q) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
+  function toMin(t) { var p = t.split(":"); return +p[0] * 60 + +p[1]; }
+  function wd(date) { return WD[new Date(date + "T12:00:00Z").getUTCDay()]; }
+  function md(date) { var p = date.split("-"); return +p[1] + "/" + +p[2]; }
+  function dayId(date) { return "d" + date.slice(5).replace("-", ""); }
+  // 飛行時間：起飛、抵達各是當地時間，扣掉兩地時差（utc 是時區，台灣 8、韓國 9）
+  function dur(f) {
+    var m = toMin(f.to.time) - toMin(f.from.time) - (f.to.utc - f.from.utc) * 60;
+    if (m < 0) m += 1440;
+    return Math.floor(m / 60) + "h" + String(m % 60).padStart(2, "0") + "m";
+  }
+  function dayDiff(a, b) { return Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 864e5); }
+  var LOCAL_UTC = 9; // 韓國 UTC+9，比台灣快 1 小時
+  function localNow() {
+    var parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+    }).formatToParts(new Date());
+    var g = function (t) { return parts.find(function (p) { return p.type === t; }).value; };
+    return { date: g("year") + "-" + g("month") + "-" + g("day"), min: +g("hour") * 60 + +g("minute") };
+  }
+  function notesOf(it) { return it.notes || (it.note ? [it.note] : []); }
+
+  var now = localNow();
+  var first = T.days[0].date;
+  var last = T.days[T.days.length - 1].date;
+  var nowFound = false;
+
+  /* ---------- hero ---------- */
+  var nights = dayDiff(first, last);
+  var fm = +first.slice(5, 7), lm = +last.slice(5, 7);
+  document.getElementById("eyebrow").textContent =
+    first.slice(0, 4) + " 年 " + fm + " 月 " + +first.slice(8) + " 日 – " + (lm !== fm ? lm + " 月 " : "") + +last.slice(8) + " 日，" +
+    (nights + 1) + " 天 " + nights + " 夜";
+
+  document.getElementById("passes").innerHTML = T.flights.map(function (f) {
+    return '<article class="pass">' +
+      '<div class="pass__top"><span class="pass__dir">' + esc(f.dir) + '</span>' +
+      '<span>' + md(f.date) + '（' + wd(f.date) + '）</span>' +
+      '<span class="pass__no">' + esc(f.no) + '</span></div>' +
+      '<div class="pass__route">' +
+        '<div class="pass__pt"><span class="pass__iata">' + esc(f.from.code) + '</span>' +
+        '<span class="pass__time">' + esc(f.from.time) + '</span>' +
+        '<span class="pass__term">' + esc(f.from.name) + ' ' + esc(f.from.term) + '</span></div>' +
+        '<div class="pass__mid"><div class="pass__track"><span class="ico">' + ICON.plane + '</span></div>' +
+        '<span>' + dur(f) + '</span></div>' +
+        '<div class="pass__pt pass__pt--end"><span class="pass__iata">' + esc(f.to.code) + '</span>' +
+        '<span class="pass__time">' + esc(f.to.time) + '</span>' +
+        '<span class="pass__term">' + esc(f.to.name) + ' ' + esc(f.to.term) + '</span></div>' +
+      '</div>' +
+      '<div class="pass__foot"><span>' + esc(f.airline) + '</span><span>韓國比台灣快 1 小時</span></div>' +
+    '</article>';
+  }).join("");
+
+  document.getElementById("facts").innerHTML =
+    '<div class="fact"><span class="fact__k">住宿</span>' + (T.hotel
+      ? '<a href="' + mapUrl(T.hotel.q || T.hotel.name) + '" target="_blank" rel="noopener">' + esc(T.hotel.name) + '</a>'
+      : '<span>還沒訂</span>') + '</div>';
+
+  /* ---------- days ---------- */
+  document.getElementById("tabs").innerHTML = T.days.map(function (d) {
+    return '<a class="tab" data-line="' + d.line + '" href="#' + dayId(d.date) + '">' +
+      '<span class="tab__dot"></span>' + md(d.date) + '<span class="tab__wd">' + wd(d.date) + '</span></a>';
+  }).join("");
+
+  function renderPlace(p) {
+    var cls = "place" + (p.meal ? " is-meal" : "") + (p.booked ? " is-booked" : "");
+    return '<li class="' + cls + '"><span class="ico">' + ICON[p.kind] + '</span><div>' +
+      '<div class="place__line">' +
+        (p.meal ? '<span class="tag tag--meal">' + esc(p.meal) + '</span>' : '') +
+        '<a class="place__name" href="' + mapUrl(p.q || p.name) + '" target="_blank" rel="noopener">' + esc(p.name) + ICON.ext + '</a>' +
+        (p.booked ? '<span class="tag tag--booked">' + esc(p.booked) + '</span>' : '') +
+        (p.suggest ? '<span class="tag tag--suggest">Claude 建議</span>' : '') +
+        navBtn(p.q || p.name) +
+      '</div>' +
+      (p.hours ? '<div class="place__hours">營業 ' + esc(p.hours) + '</div>' : '') +
+    '</div></li>';
+  }
+
+  var dests = []; // 所有目的地（跨天），用來找「下一站」
+  var tripStartAt = 0; // 第一天第一列，以第一天 00:00 起算的分鐘數（前一晚出門就是負的）
+  var FLIGHT = {};
+  T.flights.forEach(function (f) { FLIGHT[f.no] = f; });
+
+  function renderDay(d, di) {
+    var pts = d.from ? [{ q: d.from.q, name: d.from.to, until: -1, t: -1, date: d.date }] : [];
+    // 以當天 00:00（韓國時間）起算的分鐘數；比前一列早的時間（例如 00:30）視為隔天，
+    // 標了 eve 的列是前一天晚上（負的分鐘數）。
+    // 有搭飛機的那天，起飛前的列是出發地時間、落地後是目的地時間，這裡都換算成韓國時間
+    var nowAt = dayDiff(d.date, now.date) * 1440 + now.min;
+    var prev = -Infinity;
+    var firstFlight = d.items.filter(function (it) { return FLIGHT[it.flight]; })[0];
+    var utc = firstFlight ? FLIGHT[firstFlight.flight].from.utc : LOCAL_UTC;
+    var spans = d.items.map(function (it) {
+      var f = FLIGHT[it.flight];
+      var back = it.eve ? 1440 : 0;
+      var s = toMin(it.start) - back + (LOCAL_UTC - (f ? f.from.utc : utc)) * 60;
+      var away = !f && utc !== LOCAL_UTC; // 這一列人在台灣
+      if (f) utc = f.to.utc;
+      while (s < prev) s += 1440;
+      prev = s;
+      var e = it.end ? toMin(it.end) - back + (LOCAL_UTC - utc) * 60 : null;
+      if (e !== null) while (e <= s) e += 1440;
+      return { s: s, e: e, away: away };
+    });
+    if (di === 0 && spans.length) tripStartAt = spans[0].s;
+    var eveDate = new Date(Date.parse(d.date + "T00:00:00Z") - 864e5).toISOString().slice(0, 10);
+    var eveShown = false;
+    var stopNo = 0;
+    var rows = d.items.map(function (it, i) {
+      var sp = spans[i];
+      var end = sp.e !== null ? sp.e : (spans[i + 1] ? spans[i + 1].s : Math.max(sp.s + 60, 1440));
+      var live = nowAt >= sp.s && nowAt < end;
+      var anchor = live && !nowFound;
+      if (live) nowFound = true;
+      var eveTag = it.eve && !eveShown ? '<span class="t-day">' + md(eveDate) + '</span>' : '';
+      if (it.eve) eveShown = true;
+      // 在台灣的那幾列（起飛前、落地後），第一列標「台灣時間」
+      var tzTag = sp.away && !(spans[i - 1] && spans[i - 1].away) ? '<span class="t-tz">台灣時間</span>' : '';
+      var time = '<div class="row__time">' + eveTag + tzTag +
+        (it.label
+          ? '<span class="t-label">' + esc(it.label) + '</span>'
+          : '<span>' + it.start + '</span>' + (it.end ? '<span class="t-end">' + it.end + '</span>' : '')) +
+        (live ? '<span class="row__now">進行中</span>' : '') + '</div>';
+      var attrs = ' class="row row--' + it.type + (live ? ' is-now' : '') + '"' + (anchor ? ' id="now"' : '');
+
+      if (it.type === "free") {
+        return '<li' + attrs + '>' + time + '<div class="row__rail" aria-hidden="true"></div>' +
+          '<div class="row__body"><p class="free">' + esc(it.title || "空檔・待安排") + '</p></div></li>';
+      }
+
+      if (it.type === "move") {
+        // 移動中：目的地在抵達前都算「下一站」
+        if (it.q) pts.push({ q: it.q, name: it.to || it.title, until: end, t: end, date: d.date, eve: it.eve, away: sp.away });
+        var title = it.q
+          ? '<a class="move__title" href="' + mapUrl(it.q) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>'
+          : '<span class="move__title">' + esc(it.title) + '</span>';
+        return '<li' + attrs + '>' + time + '<div class="row__rail" aria-hidden="true"></div>' +
+          '<div class="row__body"><div class="move"><span class="ico">' + ICON.move + '</span>' + title +
+          notesOf(it).map(function (n) { return '<span class="move__note">' + esc(n) + '</span>'; }).join("") +
+          (it.q ? navBtn(it.q) : '') +
+          (it.links || []).map(function (l) {
+            return '<a class="move__link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.text) + ICON.ext + '</a>';
+          }).join("") +
+          '</div></div></li>';
+      }
+
+      stopNo++;
+      it.places.forEach(function (p) {
+        // 停留點：開始之後就換下一站
+        pts.push({ q: p.q || p.name, name: p.name, until: sp.s, t: (sp.s + end) / 2, date: d.date, eve: it.eve, away: sp.away });
+      });
+      var notes = notesOf(it);
+      return '<li' + attrs + '>' + time +
+        '<div class="row__rail"><span class="code" aria-label="第 ' + stopNo + ' 站">' + stopNo + '</span></div>' +
+        '<div class="row__body"><div class="card">' +
+          '<ul class="places">' + it.places.map(renderPlace).join("") + '</ul>' +
+          (notes.length ? '<div class="notes">' + notes.map(function (n) { return '<p class="note">' + esc(n) + '</p>'; }).join("") + '</div>' : '') +
+        '</div></div></li>';
+    }).join("");
+
+    var stats = [];
+    if (stopNo) stats.push(stopNo + " 站");
+
+    // Google 地圖路線：依早上／下午／晚上分段，每段從上一段的最後一站出發。
+    // 抵達時間（移動）或停留的中間時間（停留點）決定屬於哪一段。
+    // Google 地圖一次最多 10 個點，單一時段超過時再拆開。
+    var stops = [];
+    pts.forEach(function (p) {
+      dests.push(p);
+      if (p.eve || p.away) return; // 前一晚、起飛前、回台灣後在台灣的點不串進當地的路線
+      var prevStop = stops[stops.length - 1];
+      if (!prevStop || prevStop.q !== p.q) stops.push(p);
+    });
+    var PARTS = [["早上", 0, 720], ["下午", 720, 1080], ["晚上", 1080, Infinity]];
+    var segs = [];
+    var carry = null;
+    PARTS.forEach(function (part) {
+      var inPart = stops.filter(function (p) { return (p.t < 0 ? 0 : p.t) >= part[1] && (p.t < 0 ? 0 : p.t) < part[2]; });
+      if (!inPart.length) return;
+      var list = carry ? [carry].concat(inPart) : inPart;
+      carry = inPart[inPart.length - 1];
+      if (list.length < 2) return;
+      var chunks = [];
+      for (var k = 0; k < list.length - 1; k += 9) chunks.push(list.slice(k, k + 10));
+      chunks.forEach(function (c, ci) { segs.push({ label: part[0] + (chunks.length > 1 ? " " + (ci + 1) : ""), pts: c }); });
+    });
+    var route = segs.length
+      ? '<div class="routes"><p class="routes__k">用 Google 地圖開路線</p>' +
+        segs.map(function (seg) {
+          var url = "https://www.google.com/maps/dir/" + seg.pts.map(function (p) { return encodeURIComponent(p.q); }).join("/");
+          // 標籤和站名分開包，手機版只留標籤當小按鈕
+          return '<a class="seg" href="' + url + '" target="_blank" rel="noopener"><span class="seg__stops">' +
+            '<b class="seg__label">' + seg.label + '</b><span class="seg__list">　' +
+            seg.pts.map(function (p) { return esc(p.name); }).join(" → ") +
+            '</span></span><span class="seg__go"><span class="seg__open">開啟</span>' + ICON.ext + '</span></a>';
+        }).join("") + '</div>'
+      : '';
+
+    return '<section class="day" id="' + dayId(d.date) + '" data-line="' + d.line + '">' +
+      '<header class="day__head"><span class="day__md">' + md(d.date) + '</span>' +
+        '<div class="day__meta"><p class="day__eyebrow"><span class="day__bar tape" aria-hidden="true"></span>第 ' + (di + 1) + ' 天，週' + wd(d.date) + '</p>' +
+        '<h2 class="day__theme">' + esc(d.theme) + '</h2>' +
+        (stats.length ? '<p class="day__stats">' + stats.join(" · ") + '</p>' : '') + '</div></header>' +
+      '<div class="day__grid">' + route + '<ol class="rows">' + rows + '</ol>' +
+        (d.pending ? '<p class="pending">' + esc(d.pending) + '</p>' : '') + '</div>' +
+    '</section>';
+  }
+
+  document.getElementById("days").innerHTML = T.days.map(renderDay).join("");
+
+  /* ---------- status ---------- */
+  var status;
+  var until = dayDiff(now.date, first);
+  var dep = T.flights[0];
+  var nowRel = dayDiff(first, now.date) * 1440 + now.min;
+  var startAt = tripStartAt < 0 ? tripStartAt - 60 : 0;
+  if (nowRel < startAt) {
+    status = '<span class="status__pill marker">還有 ' + until + ' 天出發</span><span>' + md(dep.date) + '（' + wd(dep.date) + '）' + dep.from.time + ' ' + esc(dep.no) + ' 起飛</span>';
+  } else if (now.date <= last) {
+    var next = dests.filter(function (p) { return dayDiff(p.date, now.date) * 1440 + now.min < p.until; })[0];
+    var dayNo = dayDiff(first, now.date) + 1;
+    status = '<span class="status__pill marker">' + (dayNo > 0 ? '旅程第 ' + dayNo + ' 天' : '今晚出發') + '</span>' +
+      (nowFound ? '<a class="status__jump" href="#now">看現在的行程</a>' : '') +
+      (next ? '<span class="status__next">下一站：<b>' + esc(next.name) + '</b>' + navBtn(next.q) + '</span>' : '');
+    // 手機版的浮動按鈕（電腦版不顯示）
+    if (next) {
+      var fab = document.getElementById("fab");
+      fab.href = navUrl(next.q);
+      fab.innerHTML = '<span class="fab__k">下一站</span><span class="fab__name">' + esc(next.name) + '</span>' +
+        '<span class="fab__go">' + ICON.go + '導航</span>';
+      fab.hidden = false;
+      document.body.classList.add("has-fab");
+    }
+  } else {
+    status = '<span class="status__pill">旅程結束</span>';
+  }
+  document.getElementById("status").innerHTML = status;
+  document.getElementById("foot").textContent = "行程最後更新 " + T.updated.replace(/-/g, "/") + "。時間皆為當地時間：在韓國是韓國時間（UTC+9，比台灣快 1 小時），標「台灣時間」的是起飛前、回到台灣後的行程。";
+
+  /* ---------- active tab ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var sections = Array.prototype.slice.call(document.querySelectorAll(".day"));
+  var ticking = false;
+  function syncTab() {
+    ticking = false;
+    var idx = -1;
+    sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= 120) idx = i; });
+    // 最後一天比較短、螢幕又高的時候，捲到底它也到不了頂端，所以捲到底就直接亮最後一天
+    var se = document.scrollingElement;
+    if (se.scrollTop > 0 && se.scrollTop + window.innerHeight >= se.scrollHeight - 4) idx = sections.length - 1;
+    tabs.forEach(function (t, i) { t.classList.toggle("is-active", i === idx); });
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(syncTab); }
+  }, { passive: true });
+  syncTab();
+})();
+</script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
