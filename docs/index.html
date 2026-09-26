@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Travel</title>
+<meta name="description" content="所有旅行的行程網站。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #F1F4F2;
+    --surface: #FFFFFF;
+    --ink: #15201C;
+    --ink-2: #4B5853;
+    --ink-3: #75817C;
+    --rule: #D6DDD9;
+    --blue: #1D57BD;
+    --f-display: "Barlow Condensed", "Arial Narrow", "Noto Sans TC", sans-serif;
+    --f-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --bg: #0D1311;
+      --surface: #161F1B;
+      --ink: #E5ECE8;
+      --ink-2: #A2AEA9;
+      --ink-3: #75817C;
+      --rule: #29342F;
+      --blue: #86B3FF;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--f-body); line-height: 1.6;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 {
+    font-family: var(--f-display); font-weight: 700; font-size: 44px;
+    letter-spacing: .02em; line-height: 1; margin: 0 0 32px;
+  }
+  .trips { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .trip {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 16px 18px; background: var(--surface);
+    border: 1px solid var(--rule); border-radius: 12px;
+    color: inherit; text-decoration: none;
+  }
+  .trip:hover { border-color: var(--blue); }
+  .trip__code {
+    font-family: var(--f-display); font-weight: 700; font-size: 28px;
+    line-height: 1; color: var(--blue); min-width: 3.2ch;
+  }
+  .trip__name { font-weight: 700; }
+  .trip__dates { font-family: var(--f-mono); font-size: 13px; color: var(--ink-3); }
+</style>
+</head>
+<body>
+<main>
+  <h1>TRAVEL</h1>
+  <ol class="trips">
+    <li>
+      <a class="trip" href="sin-2026-10/">
+        <span class="trip__code">SIN</span>
+        <span>
+          <span class="trip__name">新加坡</span><br>
+          <span class="trip__dates">2026/10/17 – 10/19</span>
+        </span>
+      </a>
+    </li>
+  </ol>
+</main>
+</body>
+</html>
