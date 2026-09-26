@@ -1,0 +1,66 @@
+# 第二、三天（11/28 週六、11/29 週日）：釜山 Pass 48 小時
+
+> 研究日期：2026-09-26
+> 條件：週六廣安里、週日海雲台；一定要玩滑車、汗蒸幕、纜車（松島海上纜車和天空膠囊列車都要）；兩天都用 48 小時 Visit Busan Pass
+> 使用者有興趣的 Pass 景點：Skyline 滑車、松島海上纜車、鑽石灣遊艇、Hillspa、Spa Land、釜山塔、Aqua Palace
+
+## 釜山 Pass 規定（官方 visitbusanpass.com 的景點資料，2026-09-26 查）
+
+| 景點 | Pass 內容 | 營業時間（11 月） |
+|---|---|---|
+| 松島海上纜車 | 水晶車廂來回免費 | 09:00–21:00，關門前 30 分鐘停止售票 |
+| 松島龍宮雲橋 | 免費 | — |
+| 釜山塔 | 展望台免費 | 10:00–22:00（21:30 最後入場） |
+| Skyline 滑車 | 滑車 2 次或高空滑索 1 次，二選一；加購滑車 2 次 25,000 韓元 | 滑車 10:00–18:00（17:15 最後售票） |
+| 鑽石灣遊艇 | 白天場免費；夕陽／夜間場每人現場加 5,000 韓元 | 夜間海雲台航線 18:30、19:30、20:30、21:30；碼頭 부산 남구 분포로 101 |
+| Aqua Palace 汗蒸幕 | 汗蒸幕、三溫暖免費，水上樂園不含 | 24 小時，每月最後一個週二公休 |
+| Hillspa | 汗蒸幕、三溫暖 4 小時免費 | 汗蒸幕 24 小時、三溫暖 06:00–23:59，人多時要排隊 |
+| Spa Land Centum City | 4 小時免費，之後每小時 5,000 韓元 | 09:00–22:00（21:00 最後入場） |
+| 海雲台海岸列車 | 全線自由上下車票（當天有效，只能在美浦、青沙浦、松亭換票，票上有指定時間） | 冬季 09:00–19:00 |
+| 天空膠囊列車 | **不在 Pass 裡** | — |
+
+- 48 小時從第一次使用起算。週六 10:00 用松島纜車開始算，可以用到週一 10:00
+- Spa Land 這次沒排：週六的 Aqua Palace、週日的 Hillspa 都在當天的路線上，也都看得到海。想換可以把其中一家換成 Spa Land（Centum City 站，在海雲台和廣安里中間）
+
+## 天空膠囊列車（海雲台 Blueline Park）
+
+- 美浦 ↔ 青沙浦，單程約 30 分鐘
+- 單程：2 人 40,000、3 人 45,000、4 人 50,000 韓元（官網 skyCapsuleFare.do）
+- 冬季（11–2 月）08:30–18:00；官網可以預約，週末容易賣完
+
+## 廣安里 M 無人機秀
+
+- 每週六，冬季（10–2 月）19:00、21:00 兩場，每場約 10 分鐘，免費
+- 天氣或通訊狀況不好會取消或延後
+
+## 交通
+
+- 海雲台 → 札嘎其：2 號線往梁山 양산 方向到西面，轉 1 號線往多大浦海水浴場方向到札嘎其，約 1 小時
+- 札嘎其 → 松島纜車（송도베이스테이션）：計程車約 10 分鐘、5–7 千韓元；公車 26、30、71、96 約 30 分鐘
+- 南浦 → 廣安：1 號線到西面轉 2 號線，約 55 分鐘
+- 海雲台 → Skyline 滑車：計程車約 25–30 分鐘；滑車 ↔ 海東龍宮寺約 5 分鐘
+
+## 吃
+
+- 週六早餐：金守河豚湯 금수복국 海雲台本店（중동1로43번길 23），一樓 24 小時，米其林推薦
+- 週六午餐：奶奶伽倻小麥冷麵 할매가야밀면（광복로 56-14），10:30–21:30，1974 年開業
+- 週六晚餐：貝類代表 조개대표 廣安本店（광남로94번길 16），週五六 11:00–凌晨 03:00，烤貝類吃到飽，Naver 預約送炸蝦
+- 週日午餐：燈塔烤鰻魚烤貝類 등대장어조개구이집（青沙浦），11:30–22:00
+- 週日晚餐：海雲台市場，09:00–22:00；尚國家 상국이네 辣炒年糕
+
+## 要先預約
+
+1. 鑽石灣遊艇 11/28 18:30 夜間場（diamondbay.co.kr 或 051-200-0002）
+2. 天空膠囊列車 11/29 14:50 左右 青沙浦 → 美浦（bluelinepark.com）
+3. 조개대표 廣安本店 11/28 19:45（Naver 預約）
+
+## 來源
+
+- [Visit Busan Pass 官方景點](https://www.visitbusanpass.com/attractions/)（網站背後的 /api/v1/attraction/list）
+- [海雲台 Blueline Park 天空膠囊列車票價](https://www.bluelinepark.com/skyCapsuleFare.do)、[營業時間](https://www.bluelinepark.com/skyCapsuleTime.do)
+- [廣安里 M 無人機秀](https://www.gwangallimdrone.co.kr/)、[brunch 整理](https://brunch.co.kr/@f1010e071d70468/224)
+- [鑽石灣遊艇](https://diamondbay.co.kr/yacht-reservation)
+- [松島海上纜車交通](https://brunch.co.kr/@kkday/92)、[松島海上纜車官網](https://www.busanaircruise.co.kr/)
+- [金守河豚湯](https://www.diningcode.com/profile.php?rid=kIs9wIrsAmbR)、[奶奶伽倻小麥冷麵](https://www.diningcode.com/profile.php?rid=upBDWRRobFiO)、[조개대표](https://www.diningcode.com/profile.php?rid=qgc11JTWcg8z)、[青沙浦鰻魚](https://www.diningcode.com/profile.php?rid=CnNsmqDrHg17)、[海雲台市場](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000201003001000&uc_seq=294&lang_cd=ko)
+- [海東龍宮寺、滑車動線](https://kr.trip.com/moments/theme/poi-haedong-yonggungsa-temple-89364-itinerary-999195/)
+- 座標：Visit Busan Pass API、OpenStreetMap Nominatim

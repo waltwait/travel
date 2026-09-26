@@ -309,6 +309,7 @@
   /* 已預約：朱紅色的小印章 */
   .tag--booked { border: 3px double currentColor; color: var(--red); padding: 0 6px; transform: rotate(-3deg); }
   .tag--suggest { border: 1px dashed var(--ink-3); color: var(--ink-2); line-height: 1.55; }
+  .tag--pass { background: var(--blue-soft); color: var(--blue); }
   .move__link { font-size: 12.5px; font-weight: 700; color: var(--blue); text-decoration: none; }
   .move__link .ext { width: 10px; height: 10px; margin-left: 2px; }
   .place__hours { margin-top: 1px; font-size: 13px; color: var(--ink-3); }
@@ -544,6 +545,7 @@
         '<a class="place__name" href="' + mapUrl(p.q || p.name) + '" target="_blank" rel="noopener">' + esc(p.name) + ICON.ext + '</a>' +
         (p.booked ? '<span class="tag tag--booked">' + esc(p.booked) + '</span>' : '') +
         (p.suggest ? '<span class="tag tag--suggest">Claude 建議</span>' : '') +
+        (p.pass ? '<span class="tag tag--pass">釜山 Pass</span>' : '') +
         navBtn({ q: p.q || p.name, at: p.at, name: p.name }) +
       '</div>' +
       (p.hours ? '<div class="place__hours">營業 ' + esc(p.hours) + '</div>' : '') +
