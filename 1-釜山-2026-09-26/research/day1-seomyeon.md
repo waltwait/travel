@@ -13,7 +13,12 @@
 - 機場 → 海雲台（大眾運輸）：釜山金海輕軌 機場站 → 沙上站（約 10 分鐘），轉地鐵 2 號線往萇山 장산 方向到海雲台站（約 50 分鐘），出站走到飯店約 8 分鐘。總共約 1 小時 20 分鐘
 - 其他選擇：計程車 40–60 分鐘、30,000–45,000 韓元；機場巴士 1 號線（海雲台）60–110 分鐘、9,500 韓元
 - 海雲台 → 田浦：2 號線往沙上方向約 30 分鐘（田浦是西面的前一站）；西面 → 海雲台約 35 分鐘
-- T-money 交通卡在機場便利商店買，儲值只收現金
+- 交通卡用 WOWPASS（在台灣買、桃園機場取卡）。WOWPASS 的付款餘額和 T-money 交通餘額是兩個帳戶，交通餘額要另外儲值：用 WOWPASS App 從卡片餘額轉過去（部分手機才支援、轉了不能轉回），或在便利商店、地鐵站儲值機用韓元現金。台灣取的卡交通餘額是 0（[卡蘿旅遊](https://carolblog.tw/wowpass/)、[Skyscanner](https://www.skyscanner.com.tw/news/all-you-need-to-know-about-wowpass)）
+
+## 入境
+
+- 台灣護照到 2026/12/31 免 K-ETA；2026 年起改用電子入境卡 e-Arrival Card，抵達前 72 小時內上網填（[Trip.com](https://tw.trip.com/blog/korea-entry-policy/)、[ezTravel](https://blog.eztravel.com.tw/enter-korea/)）
+- 入境 + 領行李抓 1.5 小時（11:30–13:00），使用者覺得 1 小時不夠
 
 ## 飯店：Kwangsu Hotel 광수호텔
 
