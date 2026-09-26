@@ -223,11 +223,9 @@ window.TRIP = {
           ]
         },
         { type: "move", start: "14:00", end: "18:50", title: "搭灰機 JX772", note: "樟宜 T2 → 桃機 T2" },
-        { type: "move", start: "18:50", title: "抵達桃園" },
-        {
-          type: "move", start: "19:20", title: "搭客運回松山機場", note: "1940 有一台（車號1840/1841）",
-          links: [{ text: "客運時刻表：公路客運即時動態資訊網", url: "https://www.taiwanbus.tw/" }]
-        }
+        { type: "move", start: "18:50", title: "抵達桃園", note: "入境、領行李" },
+        { type: "move", start: "19:40", end: "20:00", title: "機捷普通車 第二航廈 → 高鐵桃園站", note: "約 16 分鐘" },
+        { type: "move", start: "20:15", end: "20:30", title: "高鐵回新竹", notes: ["桃園 → 新竹約 12 分鐘", "時間為約略，班機可能延誤，落地後再訂或搭自由座"] }
       ]
     }
   ]
