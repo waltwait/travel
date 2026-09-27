@@ -35,9 +35,10 @@
 
 ## 吃
 
-- 午餐：海雲台元祖奶奶湯飯 해운대원조할매국밥（중동1로 40，海雲台站 3 號出口附近，1962 年開業，牛肉湯飯）。營業時間資料不一：10:00–19:00 或 07:00–20:00，14:00 吃兩種都有開
-- 晚餐：83 獬豸 83해치 西面店（서전로 11-1，西面站 8 號出口約 3 分鐘，15:30–01:00，23:50 最後點餐，電話 051-817-8377）。使用者指定（2026-09-27）。店員代烤，招牌豬頸肉、豬橫膈膜肉、五花肉、豬皮，一份約 13,000 韓元起。CatchTable 遠端排隊，平日約提早 2.5 小時、週末約 3 小時；叫號後 20 分鐘內全員要到。在田浦咖啡街（旁邊）時先排
-- 備案：烤肉男 고기굽는남자 西面店（부전동 168-367，11:00–00:30），常客滿，一樣用 CatchTable 線上排隊
+- 午餐：Prahran 프라한（우동1로38번길 11，海理團路，海雲台站 4 號出口約 5 分鐘）。使用者指定（2026-09-27）。澳洲風早午餐，招牌芝麻葉、酪梨、水波蛋加蝦子的開放式三明治，一人約 12,000–15,000 韓元。營業時間資料不一：10:00–17:00（16:30 最後點餐）或 09:30–18:00（17:00 最後點餐），週三、四公休。不能訂位，排超過 2 組可以用 Tabling 遠端排隊，週末早午餐一定要排。10:00 才開，四天裡只有第一天的午餐排得進去
+- 原本的午餐：海雲台元祖奶奶湯飯 해운대원조할매국밥（중동1로 40，1962 年開業，牛肉湯飯），換成 Prahran
+- 晚餐：烤肉男 고기굽는남자 西面店（부전동 168-367，11:00–00:30）。常客滿，建議用 CatchTable 先線上排隊
+- 83 獬豸 83해치 西面店（서전로 11-1，15:30–01:00，051-817-8377）：使用者 2026-09-27 改到 11/28 廣安里那天吃廣安里店，見 `day2-3-busan-pass.md`
 - 其他西面烤肉：오십사（CatchTable 可預約）、온담、두루미、대삼식당（冷凍五花）
 
 ## 田浦咖啡街 전포카페거리
@@ -56,7 +57,7 @@
 - 釜山 Pass：[visitbusanpass.com](https://www.visitbusanpass.com/)、[KKday](https://www.kkday.com/en/blog/93073/visit-busan-pass)、[busanpassguide](https://busanpassguide.cn/en/attractions.html)
 - 機場交通：[mileasia](https://mileasia.com/korea/busan-airport-to-haeundae-beach/)、[busanwith 機場巴士](https://busanwith.com/gimhae-airport-limousine-bus-schedule/)
 - 荒嶺山：[부산광역시 스토리](https://www.busan.go.kr/news/storyreport/view?dataNo=63824)、[Visit Busan](https://www.visitbusan.net/v/7AC)、[telltrip](https://www.telltrip.com/domestic-travel/hwangnyeongsan-bongsu-busan-night-view-free/)
-- 午餐：[다이닝코드](https://www.diningcode.com/profile.php?rid=beOcPBWDiFNE)、[식신](https://www.siksinhot.com/P/256499)
+- 午餐：[테이블링 프라한](https://www.tabling.co.kr/restaurant/10471)、[다이닝코드 프라한](https://www.diningcode.com/profile.php?rid=Rj7xpZbEGctU)、[Trip.com Prahan](https://my.trip.com/moments/detail/busan-432-136923495?locale=zh-MY)；原本的牛肉湯飯：[다이닝코드](https://www.diningcode.com/profile.php?rid=beOcPBWDiFNE)
 - 晚餐：[다이닝코드 83해치](https://www.diningcode.com/profile.php?rid=s8vEHjTlXSS1)、[CatchTable 83해치](https://app.catchtable.co.kr/ct/shop/83haechi)、[一起去巴黎 83獬豸](https://lizzzstyle.tw/83-haechi/)、[다이닝코드 고기굽는남자](https://www.diningcode.com/profile.php?rid=RkVUfCUkbuNY)、[다이닝코드 서면 고기집](https://www.diningcode.com/list.dc?query=%EC%84%9C%EB%A9%B4+%EA%B3%A0%EA%B8%B0%EC%A7%91)
 - 田浦咖啡街：[Visit Busan](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000202003001000&uc_seq=355&lang_cd=ko)、[인터파크](http://tour.interpark.com/freeya/ThemeView.aspx?seq=11726)
 - 座標：OpenStreetMap Nominatim
