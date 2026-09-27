@@ -44,7 +44,8 @@
 
 - 週六早餐：金守河豚湯 금수복국 海雲台本店（중동1로43번길 23），一樓 24 小時，米其林推薦
 - 週六午餐：奶奶伽倻小麥冷麵 할매가야밀면（광복로 56-14），10:30–21:30，1974 年開業
-- 週六晚餐：貝類代表 조개대표 廣安本店（광남로94번길 16），週五六 11:00–凌晨 03:00，烤貝類吃到飽，Naver 預約送炸蝦
+- 週六晚餐：83 獬豸 83해치 廣安里店（수영구 민락동 34-7），15:30–01:00，使用者指定（2026-09-27，從第一天西面改過來）。店員代烤豬肉。CatchTable 遠端排隊 18:00 才開放，開放 5 分鐘就有約 20 組；叫號後 20 分鐘內全員要到。18:00 人在鑽石灣碼頭等遊艇，剛好抽號。座位看不看得到海沒查到，21:00 無人機秀走到海灘上看
+- 週六晚餐備案：貝類代表 조개대표 廣安本店（광남로94번길 16），週五六 11:00–凌晨 03:00，烤貝類吃到飽，Naver 預約送炸蝦
 - 週日午餐：燈塔烤鰻魚烤貝類 등대장어조개구이집（青沙浦），11:30–22:00
 - 週日晚餐：海雲台市場，09:00–22:00；尚國家 상국이네 辣炒年糕
 
@@ -52,7 +53,7 @@
 
 1. 鑽石灣遊艇 11/28 18:30 夜間場（diamondbay.co.kr 或 051-200-0002）
 2. 天空膠囊列車 11/29 14:50 左右 青沙浦 → 美浦（bluelinepark.com）
-3. 조개대표 廣安本店 11/28 19:45（Naver 預約）
+3. 83 獬豸 廣安里店 11/28：當天 18:00 用 CatchTable 遠端排隊（不能事先預約）
 
 ## 來源
 
@@ -61,6 +62,6 @@
 - [廣安里 M 無人機秀](https://www.gwangallimdrone.co.kr/)、[brunch 整理](https://brunch.co.kr/@f1010e071d70468/224)
 - [鑽石灣遊艇](https://diamondbay.co.kr/yacht-reservation)
 - [松島海上纜車交通](https://brunch.co.kr/@kkday/92)、[松島海上纜車官網](https://www.busanaircruise.co.kr/)
-- [金守河豚湯](https://www.diningcode.com/profile.php?rid=kIs9wIrsAmbR)、[奶奶伽倻小麥冷麵](https://www.diningcode.com/profile.php?rid=upBDWRRobFiO)、[조개대표](https://www.diningcode.com/profile.php?rid=qgc11JTWcg8z)、[青沙浦鰻魚](https://www.diningcode.com/profile.php?rid=CnNsmqDrHg17)、[海雲台市場](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000201003001000&uc_seq=294&lang_cd=ko)
+- [金守河豚湯](https://www.diningcode.com/profile.php?rid=kIs9wIrsAmbR)、[奶奶伽倻小麥冷麵](https://www.diningcode.com/profile.php?rid=upBDWRRobFiO)、[조개대표](https://www.diningcode.com/profile.php?rid=qgc11JTWcg8z)、[83해치 광안리점](https://www.diningcode.com/profile.php?rid=IpM5dnmEtvCz)、[CatchTable 83해치 광안리](https://app.catchtable.co.kr/ct/shop/83haechi_gwanganri)、[青沙浦鰻魚](https://www.diningcode.com/profile.php?rid=CnNsmqDrHg17)、[海雲台市場](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000201003001000&uc_seq=294&lang_cd=ko)
 - [海東龍宮寺、滑車動線](https://kr.trip.com/moments/theme/poi-haedong-yonggungsa-temple-89364-itinerary-999195/)
 - 座標：Visit Busan Pass API、OpenStreetMap Nominatim
