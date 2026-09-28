@@ -65,3 +65,17 @@
 - [金守河豚湯](https://www.diningcode.com/profile.php?rid=kIs9wIrsAmbR)、[奶奶伽倻小麥冷麵](https://www.diningcode.com/profile.php?rid=upBDWRRobFiO)、[조개대표](https://www.diningcode.com/profile.php?rid=qgc11JTWcg8z)、[83해치 광안리점](https://www.diningcode.com/profile.php?rid=IpM5dnmEtvCz)、[CatchTable 83해치 광안리](https://app.catchtable.co.kr/ct/shop/83haechi_gwanganri)、[青沙浦鰻魚](https://www.diningcode.com/profile.php?rid=CnNsmqDrHg17)、[海雲台市場](https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000201003001000&uc_seq=294&lang_cd=ko)
 - [海東龍宮寺、滑車動線](https://kr.trip.com/moments/theme/poi-haedong-yonggungsa-temple-89364-itinerary-999195/)
 - 座標：Visit Busan Pass API、OpenStreetMap Nominatim
+
+
+## 2026-09-28 週六調整（優先於上方舊方案）
+
+使用者決定 83 獬豸最優先，午晚餐合併、下午提早吃。網站改為南浦少量點心 → 廣安里 → 15:00 起預留步行與候位 → 16:00–18:00 目標主餐。取消固定冷麵午餐，Aqua Palace 降為備選；19:30 遊艇未預約，視烤肉與預約條件決定；21:00 無人機秀非保證銜接。
+
+查詢日期 2026-09-28，規劃適用 2026-11-28：
+- 餐廳營業資料矛盾：舊資料及 Trip.com 為 15:30，Diningcode 部分近期心得為 16:00。商家 Instagram 無法擷取，CatchTable 僅回傳需 JavaScript，未獨立核實開門／受理候位時間。16:00 只是目標，出發前需在店家頁重新確認；不沿用上方舊方案的「18:00 才開放」「20 分鐘保留」當作已確認規則。
+- 官方入口：https://www.instagram.com/83haechi.gwangalli/ 、https://app.catchtable.co.kr/ct/shop/83haechi_gwanganri
+- 矛盾資料：https://www.diningcode.com/profile.php?rid=IpM5dnmEtvCz 、https://kr.trip.com/moments/theme/poi-83-haechi-gwangalli-147692215-restaurant-993134/
+- 鑽石灣官網現列夜航 18:30、19:30，航程 50 分鐘、提早 30 分鐘報到，每人護照（或照片／影本）及 Pass；11/28 可售班次、夜航加價與旅客取消條件仍需查預約頁。官網「至少提前兩小時 email」指業者因天氣／人數不足通知取消，不是旅客免費取消期限：https://diamondbay.co.kr/en/visit-busan-pass/
+- 無人機秀冬季常態 19:00、21:00，約 12 分鐘以上，11/28 公告待查：https://www.gwangallimdrone.co.kr/overview
+
+所有移動／候位時段為規劃估算；候位延誤時保留烤肉，先處理遊艇變更，勿假定兩者一定兼得。原午餐及汗蒸幕資料保留作備選參考。

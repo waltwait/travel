@@ -28,7 +28,7 @@
 var HOTEL = { name: "Hotel Traveltine", q: "Hotel Traveltine Downtown Singapore, 700 Beach Road" };
 
 window.TRIP = {
-  updated: "2026-09-26",
+  updated: "2026-09-28",
 
   flights: [
     {
@@ -145,7 +145,7 @@ window.TRIP = {
         {
           type: "stop", start: "11:00", end: "12:30",
           places: [
-            { kind: "spot", name: "Jean Yip Loft 按摩", hours: "週末 11:00–19:30", q: "Jean Yip Loft 307 New Bridge Road" }
+            { kind: "spot", name: "Jean Yip Loft 按摩", booked: "已預訂", hours: "週末 11:00–19:30", q: "Jean Yip Loft 307 New Bridge Road" }
           ]
         },
         { type: "free", start: "12:30", end: "13:00" },
