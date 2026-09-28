@@ -25,7 +25,7 @@
 ## 天空膠囊列車（海雲台 Blueline Park）
 
 - 美浦 ↔ 青沙浦，單程約 30 分鐘
-- 單程：2 人 40,000、3 人 45,000、4 人 50,000 韓元（官網 skyCapsuleFare.do）
+- 單程：4 人一顆 60,000 韓元（平均每人 15,000），2026/5/1 起付款適用新票價（[現行票價](https://www.bluelinepark.com/eng/fare.do)、[調價公告](https://www.bluelinepark.com/eng/noticeView.do?idx=1617)）。舊的韓文 skyCapsuleFare.do 還顯示舊價 2 人 40,000、3 人 45,000、4 人 50,000，不要用
 - 冬季（11–2 月）08:30–18:00；官網可以預約，週末容易賣完
 
 ## 廣安里 M 無人機秀
@@ -79,3 +79,11 @@
 - 無人機秀冬季常態 19:00、21:00，約 12 分鐘以上，11/28 公告待查：https://www.gwangallimdrone.co.kr/overview
 
 所有移動／候位時段為規劃估算；候位延誤時保留烤肉，先處理遊艇變更，勿假定兩者一定兼得。原午餐及汗蒸幕資料保留作備選參考。
+
+## 83 獬豸 廣安里店補查（2026-09-28）
+
+- 地址 수영구 민락본동로19번길 59 1 樓（민락동 34-7），電話 0507-1312-8377
+- 營業：多數資料 15:30–01:00 或 01:30（23:50 最後點餐）；另有一筆 16:00–00:30。16:00 到都有開
+- 排隊：開門後現場用 Tabling 抽號；CatchTable 遠端排隊 18:00 才開放；尖峰可能等到 1 小時；廣安里店比西面店好排
+- 預約：有資料寫「可以預約、不能訂當天」（CatchTable），出發前試訂 11/28 16:00；沒有找到官方說明
+- 來源：[다이닝코드 83해치 광안리점](https://www.diningcode.com/profile.php?rid=IpM5dnmEtvCz)、[autoreserve](https://autoreserve.com/en/restaurants/GDEZU4W6RBnB3DvC4tW1)、[CatchTable](https://app.catchtable.co.kr/ct/shop/83haechi_gwanganri)、[愛吃鬼芸芸 廣安店](https://anise.tw/287305)
