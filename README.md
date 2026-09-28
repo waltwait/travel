@@ -19,6 +19,27 @@
 - `.claude/skills/`：規劃旅行用的 Claude Code skills（說明在 `CLAUDE.md`）
   - `/trip`（以及 `/trip-plan`、`/trip-research`、`/trip-go`、`/trip-review`、`/trip-pack`）：[fdjkgh580/claude-trip-skills](https://github.com/fdjkgh580/claude-trip-skills)
   - `travel-planner`（說「旅行計劃」「旅遊攻略」就會觸發）：[tianxingyang/skills-travel-planner](https://github.com/tianxingyang/skills-travel-planner)
+- `.agents/skills/`：本專案的 Codex 版 skills；共用規則在 `AGENTS.md`，與 Claude 版共用旅行資料
+
+## 在 Codex 使用
+
+在 Codex 開啟這個 repo，可直接輸入下列 skill 名稱與需求：
+
+| 指令 | 用途 |
+| --- | --- |
+| `$trip` | 查看、接續或切換旅行規劃 |
+| `$trip-plan` | 新增旅行、修改日期與偏好 |
+| `$trip-research` | 查景點、美食、交通、票券與入境資料 |
+| `$trip-go` | 編排或修改每日行程 |
+| `$trip-review` | 檢查行程問題；需要修正時加上「並修正」 |
+| `$trip-pack` | 行前待辦、打包清單、緊急卡範本 |
+| `$travel-planner` | 完整攻略或現有行程的網頁版 |
+
+例如：`$trip-review 幫我檢查釜山行程的交通銜接`，或 `$travel-planner 把目前行程整理成網頁版`。
+
+Codex 版使用 `.agents/skills/` 的專案探索機制，保留自然語言自動觸發；若新 skills 沒出現在清單，重新啟動 Codex。參考 [OpenAI skills 文件](https://developers.openai.com/codex/skills/)。
+
+這版針對本 repo 改寫：支援既有 `itinerary.js`、局部更新 metadata、依實際內容判定進度，且不依賴 Claude 專用工具或訂閱模式。沒有自動 push 或發布步驟；要上線請明確要求。原 Claude 版維持不變，問題與移植說明見 [skill review](reviews/2026-09-28-skills.md)。
 
 ## 加到手機主畫面
 

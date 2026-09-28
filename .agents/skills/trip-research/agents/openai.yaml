@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行研究"
+  short_description: "查證旅行景點、美食、交通與票券，保存資料來源及尚待確認事項"
+  default_prompt: "使用 $trip-research 補齊目前旅行的重要資料並附上來源。"

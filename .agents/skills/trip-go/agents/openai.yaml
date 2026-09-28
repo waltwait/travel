@@ -1,0 +1,4 @@
+interface:
+  display_name: "每日行程"
+  short_description: "按既有訂單與研究安排每日行程，核對交通銜接、時間與旅行預算"
+  default_prompt: "使用 $trip-go 根據已有研究安排每日行程，保留已訂項目。"

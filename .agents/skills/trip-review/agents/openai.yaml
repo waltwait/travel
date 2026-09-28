@@ -1,0 +1,4 @@
+interface:
+  display_name: "行程審查"
+  short_description: "檢查日期、時區、交通銜接與費用，提出有證據且可處理的行程問題"
+  default_prompt: "使用 $trip-review 檢查目前行程，列出問題、影響及建議修正。"

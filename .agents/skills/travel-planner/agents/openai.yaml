@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行攻略與網頁"
+  short_description: "整合完整旅行攻略或製作手機行程網站，沿用此專案的旅行手帳格式"
+  default_prompt: "使用 $travel-planner 將目前旅行整理成此專案的網頁版。"

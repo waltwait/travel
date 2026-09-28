@@ -1,0 +1,4 @@
+interface:
+  display_name: "建立旅行"
+  short_description: "建立或更新目的地、日期、旅伴與預算，保存本趟旅行條件與偏好"
+  default_prompt: "使用 $trip-plan 建立新旅行，沿用我的偏好並補齊必要資訊。"

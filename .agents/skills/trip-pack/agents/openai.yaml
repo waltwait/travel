@@ -1,0 +1,4 @@
+interface:
+  display_name: "行前準備"
+  short_description: "依出發日期與實際行程整理打包清單，保留已完成項目及必要待辦"
+  default_prompt: "使用 $trip-pack 整理目前旅行的行前準備與打包清單。"
