@@ -7,7 +7,7 @@
 
 ## 功能
 
-- 航班資訊（去程 JX900、回程 JX901，星宇航空）；住宿 Kwangsu Hotel（海雲台）
+- 航班資訊（去程 JX900、回程 JX901，星宇航空）；住宿 Elmomento Songdo（松島）
 - 每天一條時間軸：停留點是編號站牌，移動是虛線
 - 藍字 = 正餐，紅字 = 已預約，藍底「釜山 Pass」= Visit Busan Pass 免費的景點（`itinerary.js` 地點加 `pass: true`）
 - 地圖都開 Naver Map（韓國的 Google 地圖不能導航）：點地名是 Naver Map 搜尋
